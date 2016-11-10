@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <user id="1" first_name="FirstName" surname="SurName" address="Address" contact_number="ContactNumber"/>
+
+</dataset>

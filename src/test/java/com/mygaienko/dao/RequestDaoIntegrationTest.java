@@ -1,6 +1,8 @@
 package com.mygaienko.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseOperation;
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.mygaienko.app.Application;
@@ -30,6 +32,9 @@ import org.springframework.transaction.annotation.Transactional;
         DirtiesContextTestExecutionListener.class})
 @Transactional(transactionManager = "transactionManager")
 @Commit
+@DatabaseSetup(
+        value = "/com/mygaienko/dao/RequestDaoIntegrationTest.xml",
+        type = DatabaseOperation.CLEAN_INSERT)
 public class RequestDaoIntegrationTest {
 
     @Autowired
@@ -52,8 +57,24 @@ public class RequestDaoIntegrationTest {
 
         userDao.createUser(user);
 
+        UserEntity referencedUser = userDao.load(1);
+
         RequestEntity request = new RequestEntity();
-        request.setClient(user);
+        request.setClient(referencedUser);
+        request.setPaid(false);
+        request.setStatus(RequestStatus.CREATED);
+        request.setType(RequestType.REPAIR);
+
+        requestDao.createRequest(request);
+    }
+
+    @Test
+    @ExpectedDatabase(
+            value = "/com/mygaienko/dao/RequestDaoIntegrationTest.testCreateUserAndRequest.xml",
+            assertionMode = DatabaseAssertionMode.NON_STRICT)
+    public void testCreateRequestWithAlreadeaSavedUser() throws Exception {
+        RequestEntity request = new RequestEntity();
+        request.setClient(userDao.load(1));
         request.setPaid(false);
         request.setStatus(RequestStatus.CREATED);
         request.setType(RequestType.REPAIR);
@@ -73,6 +94,8 @@ public class RequestDaoIntegrationTest {
         user.setFirstName("FirstName");
         user.setSurname("Surname");
 
+
+        userDao.load(1);
         userDao.createUser(user);
         userDao.getByFirstName("FirstName");
     }

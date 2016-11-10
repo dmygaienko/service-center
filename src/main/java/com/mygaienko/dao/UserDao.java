@@ -33,4 +33,8 @@ public class UserDao {
         return entityManager.createQuery(criteria).getSingleResult();
     }
 
+    public UserEntity load(long id) {
+        return entityManager.getReference(UserEntity.class, id);
+    }
+
 }
