@@ -3,4 +3,10 @@
 
     <user id="1" first_name="FirstName" surname="SurName" address="Address" contact_number="ContactNumber"/>
 
+    <maker id="1" name="maker1"/>
+
+    <product id="1" name="product1" maker_id="1"/>
+
+    <request id="1" client_id="1" type="REPAIR" status="CREATED" product_id="1" paid="0"/>
+
 </dataset>

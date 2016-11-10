@@ -25,12 +25,12 @@ public class UserDao {
 
     public UserEntity getByFirstName(String firstName) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<UserEntity> criteria = builder.createQuery(UserEntity.class);
+        CriteriaQuery<UserEntity> query = builder.createQuery(UserEntity.class);
 
-        Root<UserEntity> root = criteria.from(UserEntity.class);
-        criteria.where(builder.equal(root.get(UserEntity_.firstName), firstName));
+        Root<UserEntity> root = query.from(UserEntity.class);
+        query.where(builder.equal(root.get(UserEntity_.firstName), firstName));
 
-        return entityManager.createQuery(criteria).getSingleResult();
+        return entityManager.createQuery(query).getSingleResult();
     }
 
     public UserEntity load(long id) {

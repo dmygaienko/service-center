@@ -6,10 +6,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.mygaienko.app.Application;
-import com.mygaienko.model.RequestEntity;
-import com.mygaienko.model.RequestStatus;
-import com.mygaienko.model.RequestType;
-import com.mygaienko.model.UserEntity;
+import com.mygaienko.model.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,5 +98,13 @@ public class RequestDaoIntegrationTest {
         userDao.load(1);
         userDao.createUser(user);
         userDao.getByFirstName("FirstName");
+    }
+
+    @Test
+    public void testFindByAttributes() throws Exception {
+        RequestEntity request = new RequestEntity();
+        request.setStatus(RequestStatus.CREATED);
+        request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), "product1"));
+        requestDao.findByAttributes(request);
     }
 }
