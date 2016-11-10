@@ -25,8 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {Application.class})
-@TestExecutionListeners(
-        {DependencyInjectionTestExecutionListener.class,
+@TestExecutionListeners({
+        DependencyInjectionTestExecutionListener.class,
         DbUnitTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class})
@@ -72,7 +72,10 @@ public class RequestDaoIntegrationTest {
     @ExpectedDatabase(
             value = "/com/mygaienko/dao/RequestDaoIntegrationTest.testCreateUserAndRequest.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT)
-    public void testCreateRequestWithAlreadeaSavedUser() throws Exception {
+    public void testCreateRequestWithAlreadySavedUser() throws Exception {
+       /* Session session = userDao.getEntityManager().unwrap(Session.class);
+        session.load(UserEntity.class, 1L);*/
+
         RequestEntity request = new RequestEntity();
         request.setClient(userDao.load(1));
         request.setPaid(false);
