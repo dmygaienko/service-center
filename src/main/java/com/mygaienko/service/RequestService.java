@@ -6,6 +6,8 @@ import com.mygaienko.model.RequestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by enda1n on 09.11.2016.
  */
@@ -27,7 +29,11 @@ public class RequestService {
         return requestDao.findById(requestId);
     }
 
-    public RequestEntity findByAttributes(RequestEntity request) {
+    public List<RequestEntity> findByAttributes(RequestEntity request) {
         return requestDao.findByAttributes(request);
+    }
+
+    public List<RequestEntity> getAll() {
+        return requestDao.getAll();
     }
 }

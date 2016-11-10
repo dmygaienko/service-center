@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 /**
  * Created by enda1n on 09.11.2016.
@@ -28,7 +29,7 @@ public class RequestDao {
         return entityManager.find(RequestEntity.class, requestId);
     }
 
-    public RequestEntity findByAttributes(RequestEntity request) {
+    public List<RequestEntity> findByAttributes(RequestEntity request) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<RequestEntity> query = builder.createQuery(RequestEntity.class);
 
@@ -59,7 +60,15 @@ public class RequestDao {
             query.where(builder.like(makerJoin.get(MakerEntity_.name), request.getMakerName()));
         }
 
-        return entityManager.createQuery(query).getSingleResult();
+        return entityManager.createQuery(query).getResultList();
     }
 
+    public List<RequestEntity> getAll() {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<RequestEntity> query = builder.createQuery(RequestEntity.class);
+
+        query.from(RequestEntity.class);
+
+        return entityManager.createQuery(query).getResultList();
+    }
 }

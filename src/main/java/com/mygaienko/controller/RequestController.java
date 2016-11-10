@@ -5,6 +5,8 @@ import com.mygaienko.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by enda1n on 09.11.2016.
  */
@@ -28,8 +30,14 @@ public class RequestController {
 
     @ResponseBody
     @RequestMapping("/find")
-    public RequestEntity findByAttributes(@RequestBody RequestEntity request) {
+    public List<RequestEntity> findByAttributes(@RequestBody RequestEntity request) {
         return requestService.findByAttributes(request);
+    }
+
+    @ResponseBody
+    @RequestMapping("/getAll")
+    public List<RequestEntity> getAll() {
+        return requestService.getAll();
     }
 
 }

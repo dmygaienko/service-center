@@ -19,6 +19,8 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 
 
@@ -96,7 +98,6 @@ public class RequestDaoIntegrationTest {
         user.setFirstName("FirstName");
         user.setSurname("Surname");
 
-
         userDao.load(1);
         userDao.createUser(user);
         userDao.getByFirstName("FirstName");
@@ -107,10 +108,10 @@ public class RequestDaoIntegrationTest {
         RequestEntity request = new RequestEntity();
         request.setStatus(RequestStatus.CREATED);
         request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), "product1"));
-        RequestEntity actual = requestDao.findByAttributes(request);
+        List<RequestEntity> actuals = requestDao.findByAttributes(request);
 
-        assertEquals("maker1", actual.getMakerName());
-        assertEquals("product1", actual.getProductName());
+        assertEquals("maker1", actuals.get(0).getMakerName());
+        assertEquals("product1", actuals.get(0).getProductName());
     }
 
     @Test
@@ -118,10 +119,18 @@ public class RequestDaoIntegrationTest {
         RequestEntity request = new RequestEntity();
         request.setStatus(RequestStatus.CREATED);
         request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), null));
-        RequestEntity actual = requestDao.findByAttributes(request);
+        List<RequestEntity> actuals = requestDao.findByAttributes(request);
 
-        assertEquals("maker1", actual.getMakerName());
-        assertEquals("product1", actual.getProductName());
+        assertEquals("maker1", actuals.get(0).getMakerName());
+        assertEquals("product1", actuals.get(0).getProductName());
+    }
+
+    @Test
+    public void testGetAll() throws Exception {
+        List<RequestEntity> actuals = requestDao.getAll();
+
+        assertEquals("maker1", actuals.get(0).getMakerName());
+        assertEquals("product1", actuals.get(0).getProductName());
     }
 
 }
