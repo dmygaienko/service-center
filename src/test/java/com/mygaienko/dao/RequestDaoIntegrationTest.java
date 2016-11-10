@@ -19,6 +19,8 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
+import static junit.framework.Assert.assertEquals;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {Application.class})
@@ -105,6 +107,21 @@ public class RequestDaoIntegrationTest {
         RequestEntity request = new RequestEntity();
         request.setStatus(RequestStatus.CREATED);
         request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), "product1"));
-        requestDao.findByAttributes(request);
+        RequestEntity actual = requestDao.findByAttributes(request);
+
+        assertEquals("maker1", actual.getMakerName());
+        assertEquals("product1", actual.getProductName());
     }
+
+    @Test
+    public void testFindByAttributesWithMaker() throws Exception {
+        RequestEntity request = new RequestEntity();
+        request.setStatus(RequestStatus.CREATED);
+        request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), null));
+        RequestEntity actual = requestDao.findByAttributes(request);
+
+        assertEquals("maker1", actual.getMakerName());
+        assertEquals("product1", actual.getProductName());
+    }
+
 }
