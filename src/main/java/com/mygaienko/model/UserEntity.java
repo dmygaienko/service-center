@@ -14,12 +14,12 @@ public class UserEntity {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+
     private String firstName;
-    @Column
+
     private String surname;
-    @Column
+
     private String contactNumber;
-    @Column
+
     private String address;
 }
