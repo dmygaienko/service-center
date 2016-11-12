@@ -4,6 +4,8 @@ import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by enda1n on 09.11.2016.
@@ -27,6 +29,17 @@ public class Request {
 
     @OneToOne
     private Product product;
+
+    @OneToMany(mappedBy = "request")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "request")
+    private List<Image> images;
+
+    @OneToMany(mappedBy = "request")
+    private List<Component> components;
+
+    private BigDecimal price;
 
     private boolean paid = false;
 

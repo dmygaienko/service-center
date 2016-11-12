@@ -1,6 +1,7 @@
 package com.mygaienko.controller;
 
 import com.mygaienko.model.Request;
+import com.mygaienko.model.dto.RequestDescription;
 import com.mygaienko.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,12 @@ public class RequestController {
     }
 
     @RequestMapping("/find")
-    public List<Request> findByAttributes(@RequestBody Request request) {
+    public List<RequestDescription> findByAttributes(@RequestBody Request request) {
         return requestService.findByAttributes(request);
     }
 
     @RequestMapping("/getAll")
-    public List<Request> getAll() {
+    public List<RequestDescription> getAll() {
         return requestService.getAll();
     }
 

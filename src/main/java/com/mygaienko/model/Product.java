@@ -23,6 +23,10 @@ public class Product {
     @JoinColumn
     private Maker maker;
 
+
+
     private String name;
 
+    @OneToOne(mappedBy = "product")
+    private Manual manual;
 }
