@@ -1,6 +1,11 @@
 package com.mygaienko.dao;
 
-import com.mygaienko.model.*;
+import com.mygaienko.model.Maker;
+import com.mygaienko.model.Maker_;
+import com.mygaienko.model.Product;
+import com.mygaienko.model.Product_;
+import com.mygaienko.model.Request;
+import com.mygaienko.model.Request_;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -21,53 +26,53 @@ public class RequestDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void createRequest(RequestEntity request) {
+    public void createRequest(Request request) {
         entityManager.persist(request);
     }
 
-    public RequestEntity findById(long requestId) {
-        return entityManager.find(RequestEntity.class, requestId);
+    public Request findById(long requestId) {
+        return entityManager.find(Request.class, requestId);
     }
 
-    public List<RequestEntity> findByAttributes(RequestEntity request) {
+    public List<Request> findByAttributes(Request request) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<RequestEntity> query = builder.createQuery(RequestEntity.class);
+        CriteriaQuery<Request> query = builder.createQuery(Request.class);
 
-        Root<RequestEntity> root = query.from(RequestEntity.class);
+        Root<Request> root = query.from(Request.class);
 
         if (request.getClient() != null) {
-            query.where(builder.equal(root.get(RequestEntity_.client), request.getClient()));
+            query.where(builder.equal(root.get(Request_.client), request.getClient()));
         }
         if (request.getStatus() != null) {
-            query.where(builder.equal(root.get(RequestEntity_.status), request.getStatus()));
+            query.where(builder.equal(root.get(Request_.status), request.getStatus()));
         }
         if (request.getType() != null) {
-            query.where(builder.equal(root.get(RequestEntity_.type), request.getType()));
+            query.where(builder.equal(root.get(Request_.type), request.getType()));
         }
 
-        Join<RequestEntity, ProductEntity> productJoin = null;
+        Join<Request, Product> productJoin = null;
         if (!StringUtils.isEmpty(request.getProductName())) {
-            productJoin = root.join(RequestEntity_.product);
-            query.where(builder.like(productJoin.get(ProductEntity_.name), request.getProductName()));
+            productJoin = root.join(Request_.product);
+            query.where(builder.like(productJoin.get(Product_.name), request.getProductName()));
         }
 
         if (!StringUtils.isEmpty(request.getMakerName())) {
             if (productJoin == null) {
-                productJoin = root.join(RequestEntity_.product);
+                productJoin = root.join(Request_.product);
             }
 
-            Join<ProductEntity, MakerEntity> makerJoin = productJoin.join(ProductEntity_.maker);
-            query.where(builder.like(makerJoin.get(MakerEntity_.name), request.getMakerName()));
+            Join<Product, Maker> makerJoin = productJoin.join(Product_.maker);
+            query.where(builder.like(makerJoin.get(Maker_.name), request.getMakerName()));
         }
 
         return entityManager.createQuery(query).getResultList();
     }
 
-    public List<RequestEntity> getAll() {
+    public List<Request> getAll() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<RequestEntity> query = builder.createQuery(RequestEntity.class);
+        CriteriaQuery<Request> query = builder.createQuery(Request.class);
 
-        query.from(RequestEntity.class);
+        query.from(Request.class);
 
         return entityManager.createQuery(query).getResultList();
     }

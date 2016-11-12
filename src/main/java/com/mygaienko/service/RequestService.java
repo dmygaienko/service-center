@@ -2,7 +2,7 @@ package com.mygaienko.service;
 
 import com.mygaienko.dao.RequestDao;
 import com.mygaienko.dao.UserDao;
-import com.mygaienko.model.RequestEntity;
+import com.mygaienko.model.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,20 +20,20 @@ public class RequestService {
     @Autowired
     private UserDao userDao;
 
-    public void createRequest(RequestEntity request, long cliendId) {
+    public void createRequest(Request request, long cliendId) {
         request.setClient(userDao.load(cliendId));
         requestDao.createRequest(request);
     }
 
-    public RequestEntity findById(long requestId) {
+    public Request findById(long requestId) {
         return requestDao.findById(requestId);
     }
 
-    public List<RequestEntity> findByAttributes(RequestEntity request) {
+    public List<Request> findByAttributes(Request request) {
         return requestDao.findByAttributes(request);
     }
 
-    public List<RequestEntity> getAll() {
+    public List<Request> getAll() {
         return requestDao.getAll();
     }
 }

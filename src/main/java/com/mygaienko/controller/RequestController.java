@@ -1,6 +1,6 @@
 package com.mygaienko.controller;
 
-import com.mygaienko.model.RequestEntity;
+import com.mygaienko.model.Request;
 import com.mygaienko.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,25 +18,22 @@ public class RequestController {
     private RequestService requestService;
 
     @RequestMapping("/create/{cliendId}")
-    public void createRequest(@RequestBody RequestEntity request, @PathVariable("cliendId") long cliendId) {
+    public void createRequest(@RequestBody Request request, @PathVariable("cliendId") long cliendId) {
         requestService.createRequest(request, cliendId);
     }
 
-    @ResponseBody
     @RequestMapping("/find?requestId={requestId}")
-    public RequestEntity findById(@PathVariable("requestId") long requestId) {
+    public Request findById(@PathVariable("requestId") long requestId) {
         return requestService.findById(requestId);
     }
 
-    @ResponseBody
     @RequestMapping("/find")
-    public List<RequestEntity> findByAttributes(@RequestBody RequestEntity request) {
+    public List<Request> findByAttributes(@RequestBody Request request) {
         return requestService.findByAttributes(request);
     }
 
-    @ResponseBody
     @RequestMapping("/getAll")
-    public List<RequestEntity> getAll() {
+    public List<Request> getAll() {
         return requestService.getAll();
     }
 

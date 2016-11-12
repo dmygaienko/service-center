@@ -1,7 +1,7 @@
 package com.mygaienko.dao;
 
-import com.mygaienko.model.UserEntity;
-import com.mygaienko.model.UserEntity_;
+import com.mygaienko.model.User;
+import com.mygaienko.model.User_;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -19,22 +19,22 @@ public class UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void createUser(UserEntity user) {
+    public void createUser(User user) {
         entityManager.persist(user);
     }
 
-    public UserEntity getByFirstName(String firstName) {
+    public User getByFirstName(String firstName) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<UserEntity> query = builder.createQuery(UserEntity.class);
+        CriteriaQuery<User> query = builder.createQuery(User.class);
 
-        Root<UserEntity> root = query.from(UserEntity.class);
-        query.where(builder.equal(root.get(UserEntity_.firstName), firstName));
+        Root<User> root = query.from(User.class);
+        query.where(builder.equal(root.get(User_.firstName), firstName));
 
         return entityManager.createQuery(query).getSingleResult();
     }
 
-    public UserEntity load(long id) {
-        return entityManager.getReference(UserEntity.class, id);
+    public User load(long id) {
+        return entityManager.getReference(User.class, id);
     }
 
 }

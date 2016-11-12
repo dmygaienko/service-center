@@ -10,14 +10,14 @@ import javax.persistence.*;
  */
 @Data
 @Entity(name = "request")
-public class RequestEntity {
+public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne
-    private UserEntity client;
+    private User client;
 
     @Enumerated(EnumType.STRING)
     private RequestType type;
@@ -26,7 +26,7 @@ public class RequestEntity {
     private RequestStatus status;
 
     @OneToOne
-    private ProductEntity product;
+    private Product product;
 
     private boolean paid = false;
 

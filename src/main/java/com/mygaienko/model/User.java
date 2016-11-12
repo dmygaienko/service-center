@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity(name = "user")
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue

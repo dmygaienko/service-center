@@ -49,7 +49,7 @@ public class RequestDaoIntegrationTest {
             value = "/com/mygaienko/dao/RequestDaoIntegrationTest.testCreateUserAndRequest.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void testCreateRequest() throws Exception {
-        UserEntity user = new UserEntity();
+        User user = new User();
         /*user.setId(1L);*/
         user.setAddress("Address");
         user.setContactNumber("ContactNumber");
@@ -58,9 +58,9 @@ public class RequestDaoIntegrationTest {
 
         userDao.createUser(user);
 
-        UserEntity referencedUser = userDao.load(1);
+        User referencedUser = userDao.load(1);
 
-        RequestEntity request = new RequestEntity();
+        Request request = new Request();
         request.setClient(referencedUser);
         request.setPaid(false);
         request.setStatus(RequestStatus.CREATED);
@@ -75,9 +75,9 @@ public class RequestDaoIntegrationTest {
             assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void testCreateRequestWithAlreadySavedUser() throws Exception {
        /* Session session = userDao.getEntityManager().unwrap(Session.class);
-        session.load(UserEntity.class, 1L);*/
+        session.load(User.class, 1L);*/
 
-        RequestEntity request = new RequestEntity();
+        Request request = new Request();
         request.setClient(userDao.load(1));
         request.setPaid(false);
         request.setStatus(RequestStatus.CREATED);
@@ -91,7 +91,7 @@ public class RequestDaoIntegrationTest {
             value = "/com/mygaienko/dao/RequestDaoIntegrationTest.testCreateUserAndRequest.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void testCreateUser() throws Exception {
-        UserEntity user = new UserEntity();
+        User user = new User();
         /*user.setId(1L);*/
         user.setAddress("Address");
         user.setContactNumber("ContactNumber");
@@ -105,10 +105,10 @@ public class RequestDaoIntegrationTest {
 
     @Test
     public void testFindByAttributes() throws Exception {
-        RequestEntity request = new RequestEntity();
+        Request request = new Request();
         request.setStatus(RequestStatus.CREATED);
-        request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), "product1"));
-        List<RequestEntity> actuals = requestDao.findByAttributes(request);
+        request.setProduct(new Product(null, new Maker(null, "maker1"), "product1"));
+        List<Request> actuals = requestDao.findByAttributes(request);
 
         assertEquals("maker1", actuals.get(0).getMakerName());
         assertEquals("product1", actuals.get(0).getProductName());
@@ -116,10 +116,10 @@ public class RequestDaoIntegrationTest {
 
     @Test
     public void testFindByAttributesWithMaker() throws Exception {
-        RequestEntity request = new RequestEntity();
+        Request request = new Request();
         request.setStatus(RequestStatus.CREATED);
-        request.setProduct(new ProductEntity(null, new MakerEntity(null, "maker1"), null));
-        List<RequestEntity> actuals = requestDao.findByAttributes(request);
+        request.setProduct(new Product(null, new Maker(null, "maker1"), null));
+        List<Request> actuals = requestDao.findByAttributes(request);
 
         assertEquals("maker1", actuals.get(0).getMakerName());
         assertEquals("product1", actuals.get(0).getProductName());
@@ -127,7 +127,7 @@ public class RequestDaoIntegrationTest {
 
     @Test
     public void testGetAll() throws Exception {
-        List<RequestEntity> actuals = requestDao.getAll();
+        List<Request> actuals = requestDao.getAll();
 
         assertEquals("maker1", actuals.get(0).getMakerName());
         assertEquals("product1", actuals.get(0).getProductName());
