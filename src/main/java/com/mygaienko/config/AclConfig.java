@@ -31,7 +31,7 @@ public boolean myMethod(DomainObject someInput) {
 }
 Now, someInput.getId() is the same as ACL_OBJECT_IDENTITY.object_id_identity
 */
-
+// http://krams915.blogspot.com/2011/01/spring-security-3-full-acl-tutorial.html
 // http://docs.spring.io/spring-security/site/docs/4.1.1.RELEASE/reference/htmlsingle/
 //TODO it is only sample
 

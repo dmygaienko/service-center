@@ -7,6 +7,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.List;
 
+/*
+GrantedAuthorities for the roles a user belongs to and the operations
+a role can perform. The GrantedAuthorities for the roles have the prefix ROLE_ and the
+operations have the prefix OP_. An example for operation authorities could be
+OP_DELETE_ACCOUNT, OP_CREATE_USER, OP_RUN_BATCH_JOBetc. Roles can be ROLE_ADMIN,
+        ROLE_USER etc.
+*/
+
 /**
  * Created by enda1n on 09.11.2016.
  */
@@ -30,17 +38,6 @@ public class User implements UserDetails {
     private String address;
 
     private String password;
-
-    /*public User(User user, List<UserAuthority> authorities) {
-        this.id = user.id;
-        this.email = user.email;
-        this.firstName = user.firstName;
-        this.surname = user.surname;
-        this.contactNumber = user.contactNumber;
-        this.address = user.address;
-        this.password = user.password;
-        this.authorities = authorities;
-    }*/
 
     @ElementCollection(targetClass = UserAuthority.class, fetch = FetchType.EAGER)
    /* @CollectionTable(

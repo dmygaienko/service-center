@@ -24,7 +24,7 @@ public class UserDaoIntegrationTest extends BaseDaoIntegrationTest {
     public void testGetByEmail() throws Exception {
         User user = userDao.getByEmail("email@test.com");
         assertEquals(1L, user.getId());
-        assertThat(user.getAuthorities(), containsInAnyOrder(UserAuthority.MASTER, UserAuthority.CLIENT));
+        assertThat(user.getAuthorities(), containsInAnyOrder(UserAuthority.ROLE_MASTER, UserAuthority.ROLE_CLIENT));
     }
 
 }

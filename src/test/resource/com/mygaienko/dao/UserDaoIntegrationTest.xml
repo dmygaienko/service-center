@@ -3,6 +3,6 @@
 
     <user id="1" email="email@test.com" first_name="FirstName" surname="SurName" address="Address" contact_number="ContactNumber"/>
 
-    <user_authorities user_id="1" authorities="CLIENT"/>
-    <user_authorities user_id="1" authorities="MASTER"/>
+    <user_authorities user_id="1" authorities="ROLE_CLIENT"/>
+    <user_authorities user_id="1" authorities="ROLE_MASTER"/>
 </dataset>
