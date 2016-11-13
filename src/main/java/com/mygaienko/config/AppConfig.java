@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ComponentScan(basePackages = {"com.mygaienko.controller", "com.mygaienko.service", "com.mygaienko.dao"})
 @EntityScan(basePackages = {"com.mygaienko.model"})
-@Import(SecurityConfig.class)
+@Import(WebSecurityConfig.class)
 public class AppConfig {
 }

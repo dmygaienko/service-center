@@ -76,4 +76,8 @@ public class RequestDao {
 
         return entityManager.createQuery(query).getResultList();
     }
+
+    public void update(Request request) {
+        entityManager.merge(request);
+    }
 }

@@ -44,4 +44,8 @@ public class RequestService {
                 .map(product -> new RequestDescription(product))
                 .collect(Collectors.toList());
     }
+
+    public void updateRequest(Request request, long cliendId) {
+        requestDao.update(request);
+    }
 }

@@ -18,22 +18,27 @@ public class RequestController {
     @Autowired
     private RequestService requestService;
 
-    @RequestMapping("/create/{cliendId}")
+    @RequestMapping(value = "/create/{cliendId}", method = RequestMethod.POST)
     public void createRequest(@RequestBody Request request, @PathVariable("cliendId") long cliendId) {
         requestService.createRequest(request, cliendId);
     }
 
-    @RequestMapping("/find?requestId={requestId}")
+    @RequestMapping(value = "/update/{cliendId}", method = RequestMethod.POST)
+    public void updateRequest(@RequestBody Request request, @PathVariable("cliendId") long cliendId) {
+        requestService.updateRequest(request, cliendId);
+    }
+
+    @RequestMapping(value = "/find?requestId={requestId}", method = RequestMethod.GET)
     public Request findById(@PathVariable("requestId") long requestId) {
         return requestService.findById(requestId);
     }
 
-    @RequestMapping("/find")
+    @RequestMapping(value = "/find", method = RequestMethod.POST)
     public List<RequestDescription> findByAttributes(@RequestBody Request request) {
         return requestService.findByAttributes(request);
     }
 
-    @RequestMapping("/getAll")
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public List<RequestDescription> getAll() {
         return requestService.getAll();
     }

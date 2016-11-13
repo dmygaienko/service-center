@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <user id="1" email="email@test.com" first_name="FirstName" surname="SurName" address="Address" contact_number="ContactNumber"/>
+
+    <user_authorities user_id="1" authorities="CLIENT"/>
+    <user_authorities user_id="1" authorities="MASTER"/>
+</dataset>

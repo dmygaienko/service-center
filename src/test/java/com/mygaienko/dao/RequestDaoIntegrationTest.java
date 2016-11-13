@@ -1,42 +1,25 @@
 package com.mygaienko.dao;
 
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
-import com.mygaienko.app.Application;
 import com.mygaienko.model.*;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class})
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-        DbUnitTestExecutionListener.class,
-        TransactionalTestExecutionListener.class,
-        DirtiesContextTestExecutionListener.class})
-@Transactional(transactionManager = "transactionManager")
+
 @Commit
 @DatabaseSetup(
         value = "/com/mygaienko/dao/RequestDaoIntegrationTest.xml",
         type = DatabaseOperation.CLEAN_INSERT)
-public class RequestDaoIntegrationTest {
+public class RequestDaoIntegrationTest extends BaseDaoIntegrationTest {
 
     @Autowired
     private RequestDao requestDao;
@@ -107,7 +90,7 @@ public class RequestDaoIntegrationTest {
     public void testFindByAttributes() throws Exception {
         Request request = new Request();
         request.setStatus(RequestStatus.CREATED);
-        request.setProduct(new Product(null, new Maker(null, "maker1"), "product1"));
+        request.setProduct(new Product(null, new Maker(null, "maker1"), "product1", null));
         List<Request> actuals = requestDao.findByAttributes(request);
 
         assertEquals("maker1", actuals.get(0).getMakerName());
@@ -118,7 +101,7 @@ public class RequestDaoIntegrationTest {
     public void testFindByAttributesWithMaker() throws Exception {
         Request request = new Request();
         request.setStatus(RequestStatus.CREATED);
-        request.setProduct(new Product(null, new Maker(null, "maker1"), null));
+        request.setProduct(new Product(null, new Maker(null, "maker1"), null, null));
         List<Request> actuals = requestDao.findByAttributes(request);
 
         assertEquals("maker1", actuals.get(0).getMakerName());
