@@ -5,6 +5,7 @@ import com.mygaienko.dao.UserDao;
 import com.mygaienko.model.Request;
 import com.mygaienko.model.dto.RequestDescription;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
@@ -23,23 +24,24 @@ public class RequestService {
     @Autowired
     private UserDao userDao;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void createRequest(Request request, long cliendId) {
         request.setClient(userDao.load(cliendId));
         requestDao.createRequest(request);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PostAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER') OR " +
+            "(hasRole('ROLE_CLIENT') AND returnObject.client.email == authentication.name)")
     public Request findById(long requestId) {
         return requestDao.findById(requestId);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER')")
     public List<RequestDescription> findByAttributes(Request request) {
         return toDescriptionDto(requestDao.findByAttributes(request));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER')")
     public List<RequestDescription> getAll() {
         return toDescriptionDto(requestDao.getAll());
     }

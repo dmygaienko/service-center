@@ -22,8 +22,8 @@ public class UserController {
         userService.createUser(user);
     }
 
-    @RequestMapping(value = "/find?byFirstName={firstName}", method = RequestMethod.GET)
-    public List<User> createUser(@PathVariable("firstName") String firstName) {
+    @RequestMapping(value = "/find/byFirstName/{firstName}", method = RequestMethod.GET)
+    public List<User> findByFirstName(@PathVariable("firstName") String firstName) {
         return userService.findByFirstName(firstName);
     }
 
