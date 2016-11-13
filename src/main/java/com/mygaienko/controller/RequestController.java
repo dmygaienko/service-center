@@ -28,7 +28,7 @@ public class RequestController {
         requestService.updateRequest(request, cliendId);
     }
 
-    @RequestMapping(value = "/find?requestId={requestId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/find/byId/{requestId}", method = RequestMethod.GET)
     public Request findById(@PathVariable("requestId") long requestId) {
         return requestService.findById(requestId);
     }

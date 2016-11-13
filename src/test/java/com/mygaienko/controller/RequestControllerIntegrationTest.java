@@ -5,7 +5,6 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.util.NestedServletException;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -15,26 +14,31 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by enda1n on 13.11.2016.
  */
-
 @DatabaseSetup(
-        value = "/com/mygaienko/dao/UserDaoIntegrationTest.xml",
+        value = "/com/mygaienko/dao/RequestDaoIntegrationTest.xml",
         type = DatabaseOperation.CLEAN_INSERT)
-public class UserControllerIntegrationTest extends BaseControllerIntegrationTest{
+public class RequestControllerIntegrationTest extends BaseControllerIntegrationTest {
 
     @Test
     @WithMockUser(username = "email@test.com", roles = "MASTER")
     public void testFindByFirstNameAsMaster() throws Exception {
-        doFindByFirstName();
+        doFindById(1);
     }
 
-    @Test(expected = /*AccessDeniedException*/NestedServletException.class)
+    @Test
     @WithMockUser(username = "email@test.com", roles = "CLIENT")
-    public void testFindByFirstNameAsClient() throws Exception {
-        doFindByFirstName();
+    public void testFindByFirstNameAsOwnerClient() throws Exception {
+        doFindById(1);
     }
 
-    private ResultActions doFindByFirstName() throws Exception {
-        return mockMvc.perform(get("/user/find/byFirstName/FirstName"))
+    @Test(expected = NestedServletException.class)
+    @WithMockUser(username = "email@test.com", roles = "CLIENT")
+    public void testFindByFirstNameAsNotOwnerClient() throws Exception {
+        doFindById(2);
+    }
+
+    private void doFindById(final int id) throws Exception {
+        mockMvc.perform(get("/request/find/byId/" + id))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }

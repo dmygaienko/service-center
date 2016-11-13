@@ -14,6 +14,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
@@ -28,6 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
         DirtiesContextTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class
 })
+@Transactional(transactionManager = "transactionManager")
 public abstract class BaseControllerIntegrationTest {
 
     @Autowired
