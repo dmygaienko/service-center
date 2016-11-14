@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentService {
 
-    @PreAuthorize("#comment.by.name == authentication.name")
+    @PreAuthorize("#comment.by.name == authentication.name OR hasRole('ROLE_ADMIN')")
     public void editComment(Comment comment) {
 
     }
