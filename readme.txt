@@ -1,0 +1,1 @@
+keytool -genkeypair -keystore server.jks -alias server -dname "CN=localhost" -keyalg RSA -keysize 2048 -storepass changeit -keypass changeit

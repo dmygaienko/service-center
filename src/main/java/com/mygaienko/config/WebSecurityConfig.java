@@ -26,20 +26,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
                 .sessionManagement()
-                .maximumSessions(1)/*.expiredUrl("")*/
+                    .maximumSessions(1)/*.expiredUrl("")*/
+                    .and()
+                    .sessionFixation().migrateSession()
                 .and()
-                .sessionFixation().migrateSession()
+                    .authorizeRequests()
+                        .antMatchers("/css/**", "/index").permitAll()
+                        .antMatchers("/user/**").hasRole("USER")
                 .and()
-                .authorizeRequests()
-                .antMatchers("/css/**", "/index").permitAll()
-                .antMatchers("/user/**").hasRole("USER")
+                    .formLogin()
+                        .loginPage("/login").failureUrl("/login-error")
                 .and()
-                .formLogin()
-                .loginPage("/login").failureUrl("/login-error")
+                    .rememberMe().tokenValiditySeconds(6000)
                 .and()
-                .rememberMe().tokenValiditySeconds(6000);
+                    .x509();
     }
 
     @Autowired
