@@ -1,8 +1,8 @@
 package com.mygaienko.config;
 
-import com.mygaienko.service.security.DefaultUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -20,7 +20,11 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
  */
 @Configuration
 @EnableWebSecurity
+@ComponentScan("com.mygaienko.service.security")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -37,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/user/**").hasRole("USER")
                 .and()
                     .formLogin()
-                        .loginPage("/login").failureUrl("/login-error")
+                        /*.loginPage("/login")*/.failureUrl("/login-error")
                 .and()
                     .rememberMe().tokenValiditySeconds(6000)
                 .and()
@@ -46,32 +50,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       /* auth
-                .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER").and()
-                .withUser("admin").password("password").roles("USER", "ADMIN");*/
-
         auth.authenticationProvider(authenticationProvider());
-
-       /* auth
-                .jdbcAuthentication()
-                .dataSource(datasource)
-                .usersByUsernameQuery("")
-                .groupAuthoritiesByUsername("");*/
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService());
+        authenticationProvider.setUserDetailsService(userDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
     }
 
-    @Override
+   /* @Override
     protected UserDetailsService userDetailsService() {
-        return new DefaultUserDetailsService();
-    }
+        return userDetailsService;
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder(){

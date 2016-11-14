@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
  * Created by enda1n on 09.11.2016.
  */
 @Configuration
-@ComponentScan(basePackages = {"com.mygaienko.controller", "com.mygaienko.service", "com.mygaienko.dao"})
+@ComponentScan(basePackages = {"com.mygaienko.controller", "com.mygaienko.service", "com.mygaienko.service.security", "com.mygaienko.dao"})
 @EntityScan(basePackages = {"com.mygaienko.model"})
 @Import({WebSecurityConfig.class, MethodSecurityConfig.class})
 public class AppConfig {
