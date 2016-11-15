@@ -27,4 +27,9 @@ public class UserDaoIntegrationTest extends BaseDaoIntegrationTest {
         assertThat(user.getAuthorities(), containsInAnyOrder(UserAuthority.ROLE_MASTER, UserAuthority.ROLE_CLIENT));
     }
 
+    @Test
+    public void testGetAll() throws Exception {
+        userDao.getAll();
+    }
+
 }

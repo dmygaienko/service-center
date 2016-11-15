@@ -24,6 +24,15 @@ public class UserDao {
         entityManager.persist(user);
     }
 
+    public List<User> getAll() {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+
+        query.from(User.class);
+
+        return entityManager.createQuery(query).getResultList();
+    }
+
     public User getByEmail(String email) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery(User.class);

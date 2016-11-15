@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
+ * https://localhost:28443/login
+ *
  * Created by enda1n on 09.11.2016.
  */
 @EnableWebMvc
