@@ -6,7 +6,7 @@ insert into user
 
 insert into user_authorities values
 (1, 11, 'ROLE_ADMIN'),
-(2, 12, 'ROLE_CLIENT'),+
+(2, 12, 'ROLE_CLIENT'),
 (3, 13, 'ROLE_MASTER');
  --<user_authorities user_id="1" authorities="ROLE_CLIENT"/>
 

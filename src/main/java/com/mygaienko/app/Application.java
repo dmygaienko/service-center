@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  *
  * Created by enda1n on 09.11.2016.
  */
-@EnableWebMvc
+/*@EnableWebMvc*/
 @SpringBootApplication
 @Import(AppConfig.class)
 public class Application {
