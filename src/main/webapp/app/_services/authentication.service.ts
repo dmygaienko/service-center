@@ -16,8 +16,7 @@ export class AuthenticationService {
         headers.append('X-Requested-With', 'XMLHttpRequest');
 
       /*  return this.http.post('/login', JSON.stringify({ username: username, password: password }),*/
-        return this.http.post('/login', { username: username, password: password, submit: 'Login',
-                '_csrf': '0d7dcb03-3a2b-4c3c-aefd-15a5a70056a0'},
+        return this.http.post('/login', "username=" + username + "&password=" + password,
             { headers })
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response

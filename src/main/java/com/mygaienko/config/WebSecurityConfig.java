@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/css/**", "/index").permitAll()
                         .antMatchers("/user/**").hasRole("USER")
                 .and()
-                    .formLogin()/*.loginPage("/index.html")*/.failureUrl("/login-error")
+                    .formLogin().loginPage("/login").failureUrl("/login-error")
                 .and()
                     .rememberMe().tokenValiditySeconds(6000)
                 .and()
