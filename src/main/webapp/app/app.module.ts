@@ -15,8 +15,13 @@ import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { HomeComponent } from './home/index';
+import { RequestsComponent } from './requests/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+import { AboutComponent } from "./about/index";
+
+import { MenuComponent } from "./menu/index";
+import { EmployeesComponent } from "./employees/index";
 
 @NgModule({
     imports: [
@@ -29,8 +34,12 @@ import { RegisterComponent } from './register/index';
         AppComponent,
         AlertComponent,
         HomeComponent,
+        RequestsComponent,
+        MenuComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        EmployeesComponent,
+        AboutComponent
     ],
     providers: [
         AuthGuard,

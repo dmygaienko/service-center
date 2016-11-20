@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <ul *ngIf="isAuthenticated()" class="nav navbar-nav">
+
+            <li><a [routerLink]="['/home']" class="btn">Home</a></li>
+
+            <li *ngIf="hasRole('ROLE_ADMIN')">
+                <a [routerLink]="['/requests']" class="btn">Requests</a>
+            </li>
+
+            <li><a [routerLink]="['/employees']" class="btn">Our Employees</a></li>
+            <li><a [routerLink]="['/about']" class="btn">About</a></li>
+        </ul>
+
+    </div>
+</nav>

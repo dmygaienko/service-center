@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import {User} from "../_models/user";
 
 @Injectable()
 export class AuthenticationService {
@@ -34,5 +35,18 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+
+    isAuthenticated() {
+        return localStorage.getItem('currentUser') != null;
+    }
+
+    getCurrentUser() {
+        return JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+    hasRole(role:string) {
+        var user = JSON.parse(localStorage.getItem('currentUser')) as User;
+        return user.authorities.includes(role);
     }
 }
