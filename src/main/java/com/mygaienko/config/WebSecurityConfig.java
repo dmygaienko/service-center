@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 /**
@@ -36,9 +38,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .authorizeRequests()
                         .antMatchers("/css/**", "/index").permitAll()
-                        .antMatchers("/user/**").hasRole("USER")
+                        .antMatchers("/user*").hasAnyRole("ADMIN", "USER")
                 .and()
-                    .formLogin().loginPage("/login").failureUrl("/login-error")
+                    .formLogin().loginProcessingUrl("/login").successHandler(successHandler())
+                    .failureUrl("/login-error")
                 .and()
                     .rememberMe().tokenValiditySeconds(6000)
                 .and()
@@ -48,6 +51,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+       /* SavedRequestAwareAuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();
+        successHandler.setTargetUrlParameter("/user/me");*/
+        return new ForwardAuthenticationSuccessHandler("/user/me");
     }
 
     @Bean

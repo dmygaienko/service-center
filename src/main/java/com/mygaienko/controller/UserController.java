@@ -5,6 +5,7 @@ import com.mygaienko.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -16,6 +17,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping(value = "/me", method = RequestMethod.POST)
+    public Principal user(Principal principal) {
+        return principal;
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public void createUser(@RequestBody User user) {
