@@ -19,11 +19,14 @@ export class AuthenticationService {
         return this.http.post('/login', "username=" + username + "&password=" + password,
             { headers })
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let user = response.json();
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                if(response) {
+                    let user = response.json();
+                    if (user != 'undefined' && user.authenticated) {
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                    } else {
+                        throw new Error("Bad credentials");
+                    }
                 }
             });
     }

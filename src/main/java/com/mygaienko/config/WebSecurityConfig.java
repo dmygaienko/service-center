@@ -1,5 +1,7 @@
 package com.mygaienko.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mygaienko.model.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +14,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import java.io.OutputStream;
 
 /**
  * Created by enda1n on 09.11.2016.
@@ -22,6 +27,9 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -40,8 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/css/**", "/index").permitAll()
                         .antMatchers("/user*").hasAnyRole("ADMIN", "USER")
                 .and()
-                    .formLogin().loginProcessingUrl("/login").successHandler(successHandler())
-                    .failureUrl("/login-error")
+                    .formLogin().loginPage("/login").successHandler(authenticationSuccessHandler())
+                    .failureHandler(authenticationFailureHandler())
                 .and()
                     .rememberMe().tokenValiditySeconds(6000)
                 .and()
@@ -54,10 +62,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthenticationSuccessHandler successHandler() {
-       /* SavedRequestAwareAuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();
-        successHandler.setTargetUrlParameter("/user/me");*/
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new ForwardAuthenticationSuccessHandler("/user/me");
+    }
+
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return ((request, response, exception) -> {
+            try (OutputStream out = response.getOutputStream()) {
+                UserInfo user = new UserInfo();
+                user.setUsername("INVALID");
+                objectMapper.writeValue(out, user);
+            }
+        });
     }
 
     @Bean
