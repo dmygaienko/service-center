@@ -1,6 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // used to create fake backend
@@ -28,6 +28,7 @@ import { NgSemanticModule } from 'ng-semantic';
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         routing,
         NgSemanticModule
