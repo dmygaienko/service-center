@@ -22,13 +22,15 @@ import { AboutComponent } from "./about/index";
 
 import { MenuComponent } from "./menu/index";
 import { EmployeesComponent } from "./employees/index";
+import { NgSemanticModule } from 'ng-semantic';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        NgSemanticModule
     ],
     declarations: [
         AppComponent,
