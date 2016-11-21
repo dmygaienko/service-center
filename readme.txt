@@ -46,3 +46,5 @@ https://github.com/cornflourblue/angular2-registration-login-example
 <button (click)="employer?.goToWork()">Go To Work</button> ->
 <button (click)="employer === undefined ? : employer.goToWork()">Go To Work</button>
 ----------------
+ngSemantic examples https://github.com/vladotesanovic/ngSemantic/blob/master/demo/app/components/elements/form.ts
+----------------
