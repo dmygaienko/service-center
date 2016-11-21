@@ -48,3 +48,5 @@ https://github.com/cornflourblue/angular2-registration-login-example
 ----------------
 ngSemantic examples https://github.com/vladotesanovic/ngSemantic/blob/master/demo/app/components/elements/form.ts
 ----------------
+angular 2 api https://angular.io/docs/ts/latest/api/forms/index/FormControl-class.html
+----------------
