@@ -18,10 +18,9 @@ public class Component {
 
     private String name;
 
-    private String description;
-
     private BigDecimal price;
 
+    @Enumerated(EnumType.STRING)
     private ComponentStatus status;
 
     @ManyToOne

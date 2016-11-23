@@ -4,14 +4,14 @@
     <user id="1" email="email@test.com" first_name="FirstName" surname="SurName" address="Address" password="qwerty1234"
           contact_number="ContactNumber"/>
 
-    <user_authorities user_id="1" authorities="ROLE_CLIENT"/>
+    <user_authorities id="1" user_id="1" authorities="ROLE_CLIENT"/>
 
     <!-- -->
 
     <user id="2" email="email2@test.com" first_name="FirstName2" surname="SurName2" address="Address2" password="qwerty12342"
           contact_number="ContactNumber2"/>
 
-    <user_authorities user_id="2" authorities="ROLE_CLIENT"/>
+    <user_authorities id="2" user_id="2" authorities="ROLE_CLIENT"/>
 
     <!-- -->
 
@@ -21,6 +21,9 @@
 
     <request id="1" client_id="1" type="REPAIR" status="CREATED" product_id="1" paid="0"/>
 
-    <request id="2" client_id="2" type="REPAIR" status="CREATED" product_id="1" paid="0"/>
+    <request id="2" client_id="2" type="REPAIR" status="CREATED" product_id="1" paid="0" datetime="2008-08-08 20:08:08"/>
+
+    <component id="1" name="component1" price="10.0" status="ARRIVED" request_id="2"
+               product_id="1"/>
 
 </dataset>

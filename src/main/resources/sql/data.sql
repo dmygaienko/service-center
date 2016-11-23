@@ -4,7 +4,8 @@ insert into user
 ( 12, 'email12@test.com', 'first_name12', 'surname12', 'address12', '$2a$16$lTyv11iO3BhUq0sjXeLSsegRBb2RFx4B.ElmoEKNfZMwF4vD1nXj2', 'contact_number' ),
 ( 13, 'email13@test.com', 'first_name13', 'surname13', 'address13', 'password', 'contact_number' );
 
-insert into user_authorities values
+insert into user_authorities
+(id, user_id, authorities) values
 (1, 11, 'ROLE_ADMIN'),
 (2, 12, 'ROLE_CLIENT'),
 (3, 13, 'ROLE_MASTER');

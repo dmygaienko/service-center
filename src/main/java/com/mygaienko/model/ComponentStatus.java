@@ -5,5 +5,7 @@ package com.mygaienko.model;
  */
 public enum ComponentStatus {
 
+    WAITED,
+    ARRIVED
 
 }

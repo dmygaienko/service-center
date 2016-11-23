@@ -88,10 +88,7 @@ public class RequestDaoIntegrationTest extends BaseDaoIntegrationTest {
 
     @Test
     public void testFindById() throws Exception {
-        Request request = new Request();
-        request.setStatus(RequestStatus.CREATED);
-        request.setProduct(new Product(null, new Maker(null, "maker1"), "product1", null));
-        Request actual = requestDao.findById(1L);
+        Request actual = requestDao.findById(2L);
 
         assertEquals("maker1", actual.getMakerName());
         assertEquals("product1", actual.getProductName());

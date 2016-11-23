@@ -18,7 +18,7 @@ public class Manual {
     @Lob
     private byte[] content;
 
-    private String description;
+    private String name;
 
     @OneToOne
     @JoinColumn
