@@ -13,7 +13,7 @@ import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, RequestService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { RequestsComponent } from './requests/index';
 import { LoginComponent } from './login/index';
@@ -49,6 +49,7 @@ import { NgSemanticModule } from 'ng-semantic';
         AlertService,
         AuthenticationService,
         UserService,
+        RequestService,
 
         // providers used to create fake backend
        /* fakeBackendProvider,*/

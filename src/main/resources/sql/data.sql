@@ -13,3 +13,18 @@ insert into user_authorities
 
  -- <user id="1" email="email@test.com" first_name="FirstName" surname="SurName" address="Address" password="qwerty1234"
  --          contact_number="ContactNumber"/>
+
+
+-- <maker id="1" name="maker1"/>
+insert into maker
+(id, name) values
+(1, 'maker1');
+
+
+insert into product
+(id, name, maker_id) values
+(1, 'product1', 1);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(1, 11, 'REPAIR', 'CREATED', 1, 0);
