@@ -1,17 +1,11 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<div *ngIf="isAuthenticated()" class="ui stackable container menu">
 
-        <ul *ngIf="isAuthenticated()" class="nav navbar-nav">
+    <a [routerLink]="['/home']" class="btn item">Home</a>
 
-            <li><a [routerLink]="['/home']" class="btn">Home</a></li>
+    <a *ngIf="hasRole('ROLE_ADMIN')" [routerLink]="['/requests']" class="btn item">Requests</a>
 
-            <li *ngIf="hasRole('ROLE_ADMIN')">
-                <a [routerLink]="['/requests']" class="btn">Requests</a>
-            </li>
+    <a [routerLink]="['/employees']" class="btn item">Our Employees</a>
 
-            <li><a [routerLink]="['/employees']" class="btn">Our Employees</a></li>
-            <li><a [routerLink]="['/about']" class="btn">About</a></li>
-        </ul>
+    <a [routerLink]="['/about']" class="btn item">About</a>
 
-    </div>
-</nav>
+</div>
