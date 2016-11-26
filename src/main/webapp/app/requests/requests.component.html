@@ -1,13 +1,41 @@
-<div>
-   get all requests
+<div xmlns="http://www.w3.org/1999/html">
+    <div *ngIf="!requests" class="ui active medium text loader"></div>
+    <div>
 
-   <div *ngIf="!requests" class="ui active medium text loader"></div>
-   <sm-list class="middle aligned animated divided">
-           <sm-item *ngFor="let request of requests"
-                    [header]="request.productDescription"
-                    (click)="openRequest(request)"
-                    style="cursor: pointer">
-               {{request.status}}
-           </sm-item>
-   </sm-list>
+        <form class="ui form" [formGroup]="searchForm">
+            <div class="fields">
+                <sm-loader [complete]="!formSubmited" class="inverted" text="Loading..."></sm-loader>
+                <div class="field">
+                    <sm-input [control]="searchForm.controls.surnameControl" class="left labeled"
+                              label="Прізвище" placeholder="Вкажіть прізвище...">
+                    </sm-input>
+                </div>
+                <div class="field">
+                    <sm-input [control]="searchForm.controls.idControl" class="left labeled"
+                              label="Ідентифікатор" placeholder="Вкажіть ідентифікатор...">
+                    </sm-input>
+                </div>
+                <div class="field">
+                    <sm-input [control]="searchForm.controls.makerControl" class="left labeled"
+                              label="Прилад" placeholder="Вкажіть прилад...">
+                    </sm-input>
+                </div>
+                <div class="field">
+                    <sm-button (click)="submit()" [disabled]="!searchForm.valid" class="primary right-button"
+                               id="search-form-button">Пошук</sm-button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+            <sm-list class="middle aligned animated divided">
+                <sm-item *ngFor="let request of requests"
+                         [header]="request.productDescription"
+                         (click)="openRequest(request)"
+                         style="cursor: pointer">
+                    {{request.status}}
+                </sm-item>
+            </sm-list>
+    </div>
 </div>

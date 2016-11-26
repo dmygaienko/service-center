@@ -16,6 +16,11 @@
     margin-top: 15px;
 }
 
+#search-form-button {
+    position: absolute;
+    bottom: 0;
+}
+
 /*#fixed-container {
     height: 800px;
 }*/
