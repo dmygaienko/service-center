@@ -1,5 +1,8 @@
 <div>
    get all requests
 
-   <li *ngFor="let item of requests; let i = index">{{item.productDescription}} + {{i}}</li>
+   <div *ngIf="!requests" class="ui active medium text loader"></div>
+   <li *ngFor="let request of requests; let i = index">
+      <div (click)="openRequest(request)" >{{request.productDescription}} + {{i}}</div>
+   </li>
 </div>

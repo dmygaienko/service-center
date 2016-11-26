@@ -16,6 +16,7 @@ import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, RequestService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { RequestsComponent } from './requests/index';
+import { RequestComponent } from './request/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AboutComponent } from "./about/index";
@@ -38,6 +39,7 @@ import { NgSemanticModule } from 'ng-semantic';
         AlertComponent,
         HomeComponent,
         RequestsComponent,
+        RequestComponent,
         MenuComponent,
         LoginComponent,
         RegisterComponent,

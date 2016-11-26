@@ -28,12 +28,12 @@ public class RequestController {
         requestService.updateRequest(request, cliendId);
     }
 
-    @RequestMapping(value = "/find/byId/{requestId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/byId/{requestId}", method = RequestMethod.GET)
     public Request findById(@PathVariable("requestId") long requestId) {
         return requestService.findById(requestId);
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    @RequestMapping(value = "/byAttributes", method = RequestMethod.POST)
     public List<RequestDescription> findByAttributes(@RequestBody Request request) {
         return requestService.findByAttributes(request);
     }

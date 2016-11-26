@@ -12,4 +12,8 @@ export class RequestService {
         return this.http.get('/request/getAll').map((response: Response) => <Request[]> response.json());
     }
 
+    getById(id: number | string): Observable<Request> {
+        return this.http.get('/request/byId/' + id).map((response: Response) => <Request> response.json());
+    }
+
 }
