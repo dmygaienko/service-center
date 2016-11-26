@@ -5,3 +5,17 @@
 .help-block {
     font-size: 12px;
 }
+
+#menu {
+    margin-bottom: 15px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    margin-top: 15px;
+}
+
+/*#fixed-container {
+    height: 800px;
+}*/

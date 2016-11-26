@@ -2,7 +2,12 @@
    get all requests
 
    <div *ngIf="!requests" class="ui active medium text loader"></div>
-   <li *ngFor="let request of requests; let i = index">
-      <div (click)="openRequest(request)" >{{request.productDescription}} + {{i}}</div>
-   </li>
+   <sm-list class="middle aligned animated divided">
+           <sm-item *ngFor="let request of requests"
+                    [header]="request.productDescription"
+                    (click)="openRequest(request)"
+                    style="cursor: pointer">
+               {{request.status}}
+           </sm-item>
+   </sm-list>
 </div>
