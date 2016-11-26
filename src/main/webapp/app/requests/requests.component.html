@@ -29,13 +29,13 @@
     </div>
 
     <div>
-            <sm-list class="middle aligned animated divided">
-                <sm-item *ngFor="let request of requests"
-                         [header]="request.productDescription"
-                         (click)="openRequest(request)"
-                         style="cursor: pointer">
-                    {{request.status}}
-                </sm-item>
-            </sm-list>
+        <sm-list class="middle aligned animated divided">
+            <sm-item *ngFor="let request of requests"
+                     [header]="request.productDescription"
+                     (click)="openRequest(request)"
+                     style="cursor: pointer">
+                {{request.status}}
+            </sm-item>
+        </sm-list>
     </div>
 </div>
