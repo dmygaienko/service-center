@@ -21,6 +21,10 @@
     bottom: 0;
 }
 
+.footer-name {
+    text-align: left;
+}
+
 /*#fixed-container {
     height: 800px;
 }*/
