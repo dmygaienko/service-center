@@ -18,6 +18,7 @@ export class RequestsComponent implements OnInit {
             'surnameControl': new FormControl('', ),
             'idControl': new FormControl('', ),
             'makerControl': new FormControl('', ),
+            'productControl': new FormControl('', ),
         });
 
     }

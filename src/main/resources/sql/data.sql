@@ -28,3 +28,68 @@ insert into product
 insert into request
 (id, client_id, type, status, product_id, paid) values
 (1, 11, 'REPAIR', 'CREATED', 1, 0);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(2, 12, 'REPAIR', 'CREATED', 1, 0);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(3, 12, 'REPAIR', 'CREATED', 1, 0);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(4, 12, 'REPAIR', 'CREATED', 1, 0);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(5, 12, 'REPAIR', 'CREATED', 1, 0);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(6, 12, 'REPAIR', 'CREATED', 1, 0);
+
+---------------------
+insert into maker
+(id, name) values
+(2, 'Apple');
+
+
+insert into product
+(id, name, maker_id) values
+(2, 'MacBook Pro MD212', 2),
+(3, 'MacBook Pro MD213', 2),
+(4, 'MacBook Pro MD214', 2),
+(5, 'MacBook Pro MD215', 2),
+(6, 'MacBook Pro MC975', 2),
+(7, 'MacBook Pro MC985', 2),
+(8, 'MacBook Pro MGX92', 2),
+(9, 'MacBook Pro MF840', 2),
+(10, 'MacBook Pro MF841', 2),
+(11, 'MacBook Pro MF851', 2);
+
+insert into request
+(id, client_id, type, status, product_id, paid) values
+(11, 11, 'REPAIR', 'CREATED', 2, 0),
+(12, 12, 'REPAIR', 'CREATED', 3, 0),
+(13, 12, 'REPAIR', 'CREATED', 3, 0),
+(14, 12, 'REPAIR', 'CREATED', 4, 0),
+(15, 12, 'REPAIR', 'CREATED', 5, 0),
+(16, 12, 'REPAIR', 'CREATED', 6, 0),
+(21, 11, 'REPAIR', 'CREATED', 7, 0),
+(22, 12, 'REPAIR', 'CREATED', 8, 0),
+(23, 12, 'REPAIR', 'CREATED', 9, 0),
+(24, 12, 'REPAIR', 'CREATED', 10, 0),
+(25, 12, 'REPAIR', 'CREATED', 11, 0),
+(31, 11, 'REPAIR', 'CREATED', 2, 0),
+(32, 12, 'REPAIR', 'CREATED', 3, 0),
+(33, 12, 'REPAIR', 'CREATED', 3, 0),
+(34, 12, 'REPAIR', 'CREATED', 4, 0),
+(35, 12, 'REPAIR', 'CREATED', 5, 0),
+(36, 12, 'REPAIR', 'CREATED', 6, 0),
+(41, 11, 'REPAIR', 'CREATED', 7, 0),
+(42, 12, 'REPAIR', 'CREATED', 8, 0),
+(43, 12, 'REPAIR', 'CREATED', 9, 0),
+(44, 12, 'REPAIR', 'CREATED', 10, 0),
+(45, 12, 'REPAIR', 'CREATED', 11, 0),
+(26, 12, 'REPAIR', 'CREATED', 11, 0);

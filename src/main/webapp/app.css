@@ -19,10 +19,21 @@
 #search-form-button {
     position: absolute;
     bottom: 0;
+    height: 22px;
+}
+
+#search-form-button >button{
+    height: 22px;
+    vertical-align: text-top;
+    padding: 1px 40px;
 }
 
 .footer-name {
     text-align: left;
+}
+
+input, button .search{
+    height: 22px;
 }
 
 /*#fixed-container {

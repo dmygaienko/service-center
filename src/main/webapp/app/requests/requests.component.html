@@ -2,22 +2,27 @@
     <div *ngIf="!requests" class="ui active medium text loader"></div>
     <div>
 
-        <form class="ui form" [formGroup]="searchForm">
+        <form class="ui form search" [formGroup]="searchForm">
             <div class="fields">
                 <sm-loader [complete]="!formSubmited" class="inverted" text="Loading..."></sm-loader>
                 <div class="field">
                     <sm-input [control]="searchForm.controls.surnameControl" class="left labeled"
-                              label="Прізвище" placeholder="Вкажіть прізвище...">
+                               placeholder="Вкажіть прізвище..."> <!-- label="Прізвище" -->
                     </sm-input>
                 </div>
                 <div class="field">
                     <sm-input [control]="searchForm.controls.idControl" class="left labeled"
-                              label="Ідентифікатор" placeholder="Вкажіть ідентифікатор...">
+                               placeholder="Вкажіть ідентифікатор...">  <!-- label="Ідентифікатор" -->
                     </sm-input>
                 </div>
                 <div class="field">
                     <sm-input [control]="searchForm.controls.makerControl" class="left labeled"
-                              label="Прилад" placeholder="Вкажіть прилад...">
+                               placeholder="Вкажіть виробника...">  <!-- label="Прилад" -->
+                    </sm-input>
+                </div>
+                <div class="field">
+                    <sm-input [control]="searchForm.controls.productControl" class="left labeled"
+                              placeholder="Вкажіть модель...">  <!-- label="Прилад" -->
                     </sm-input>
                 </div>
                 <div class="field">
