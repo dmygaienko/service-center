@@ -29,7 +29,7 @@ export class RequestComponent implements OnInit {
 
     showModal(image: Image): void {
         this.selectedImage = image;
-        this.imageModal.show();
+        this.imageModal.show({inverted: true});
     }
 
 }

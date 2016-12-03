@@ -8,13 +8,12 @@
          <img *ngFor="let image of request?.images" class="ui small image"
               [src]="'data:image/jpg;base64,' + image.content"
               (click)="showModal(image)"/>
-              <!--(click)="imageModal.show({inverted: true})"/>-->
       </div>
 
       <sm-modal title="Hello from Modal" class="" icon="home" #bigImageModal>
          <modal-content>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            <img class="ui huge image"
+            <img class="ui centered huge image"
                  *ngIf="selectedImage" [src]="'data:image/jpg;base64,' + selectedImage.content"/>
          </modal-content>
          <modal-actions>
