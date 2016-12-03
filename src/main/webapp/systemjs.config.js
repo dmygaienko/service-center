@@ -26,6 +26,8 @@
             'rxjs': 'npm:rxjs',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
             'ng-semantic': 'npm:ng-semantic',
+            'angular2-modal': 'npm:angular2-modal/bundles/angular2-modal.umd.js',
+            'angular2-modal/plugins/bootstrap': 'npm:angular2-modal/bundles/angular2-modal.bootstrap.umd.js',
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
