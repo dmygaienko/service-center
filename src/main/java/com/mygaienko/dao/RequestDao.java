@@ -11,10 +11,8 @@ import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Root;
+import javax.persistence.Query;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 /**
@@ -31,7 +29,18 @@ public class RequestDao {
     }
 
     public Request findById(long requestId) {
-        return entityManager.find(Request.class, requestId);
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Request> query = builder.createQuery(Request.class);
+
+        Root<Request> root = query.from(Request.class);
+        query.where(builder.equal(root.get(Request_.id), requestId));
+
+        Join<Request, Product> productJoin = root.join(Request_.product, JoinType.LEFT);
+        productJoin.join(Product_.maker, JoinType.LEFT);
+
+        root.join(Request_.images, JoinType.LEFT);
+
+        return entityManager.createQuery(query).getSingleResult();
     }
 
     public List<Request> findByAttributes(Request request) {
@@ -79,5 +88,13 @@ public class RequestDao {
 
     public void update(Request request) {
         entityManager.merge(request);
+    }
+    /*"'C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\maxresdefault.jpg'" +*/
+    public List getImages() {
+        Query nativeQuery = entityManager.createNativeQuery(
+                "select LENGTH(FILE_READ(" +
+                       "'classpath:/images/maxresdefault.jpg'" +
+                        ")) file");
+        return nativeQuery.getResultList();
     }
 }

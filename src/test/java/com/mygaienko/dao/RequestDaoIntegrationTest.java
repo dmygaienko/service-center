@@ -16,9 +16,9 @@ import static junit.framework.Assert.assertEquals;
 
 
 @Commit
-@DatabaseSetup(
+/*@DatabaseSetup(
         value = "/com/mygaienko/dao/RequestDaoIntegrationTest.xml",
-        type = DatabaseOperation.CLEAN_INSERT)
+        type = DatabaseOperation.CLEAN_INSERT)*/
 public class RequestDaoIntegrationTest extends BaseDaoIntegrationTest {
 
     @Autowired
@@ -124,4 +124,9 @@ public class RequestDaoIntegrationTest extends BaseDaoIntegrationTest {
         assertEquals("product1", actuals.get(0).getProductName());
     }
 
+    @Test
+    public void getImages() throws Exception {
+        requestDao.getImages();
+
+    }
 }

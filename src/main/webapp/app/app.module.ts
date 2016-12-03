@@ -1,7 +1,9 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule  }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 // used to create fake backend
 /*import { fakeBackendProvider } from './_helpers/index';*/
@@ -32,7 +34,9 @@ import { NgSemanticModule } from 'ng-semantic';
         ReactiveFormsModule,
         HttpModule,
         routing,
-        NgSemanticModule
+        NgSemanticModule,
+        ModalModule.forRoot(),
+        BootstrapModalModule
     ],
     declarations: [
         AppComponent,

@@ -93,3 +93,14 @@ insert into request
 (44, 12, 'REPAIR', 'CREATED', 10, 0),
 (45, 12, 'REPAIR', 'CREATED', 11, 0),
 (26, 12, 'REPAIR', 'CREATED', 11, 0);
+
+insert into image
+(id, content, created, description, request_id) values
+  (1, '54455354', parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description', 11),
+  (2, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\maxresdefault.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description1', 12),
+  (3, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\plasma-tv-repair-melbourne.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description2', 12),
+  (4, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\repair1.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description3', 12),
+  (5, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\ремонт-телевизора-мастером.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description4', 12),
+  (6, '', parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description', 13);
+
+

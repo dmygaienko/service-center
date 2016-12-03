@@ -4,6 +4,7 @@ import com.mygaienko.dao.RequestDao;
 import com.mygaienko.dao.UserDao;
 import com.mygaienko.model.Request;
 import com.mygaienko.model.dto.RequestDescription;
+import com.mygaienko.model.dto.RequestDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,8 +33,8 @@ public class RequestService {
 
     @PostAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER') OR " +
             "(hasRole('ROLE_CLIENT') AND returnObject.client.email == authentication.name)")
-    public Request findById(long requestId) {
-        return requestDao.findById(requestId);
+    public RequestDetails findById(long requestId) {
+        return new RequestDetails(requestDao.findById(requestId));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER')")

@@ -3,6 +3,25 @@
    <div *ngIf="request">
       123
       request id: {{request.id}}
+
+
+     <!-- <img class="ui big image" *ngIf="request?.images[0]?.content"
+           [src]="'data:image/jpg;base64,' + request?.images[0]?.content"/>-->
+
+      <!--
+      <sm-list class="ui small images">
+         <sm-item *ngFor="let image of request?.images" class="ui small image">
+            <img class="ui small image" [src]="'data:image/jpg;base64,' + image.content"/>
+         </sm-item>
+      </sm-list>
+      -->
+         <div class="ui small images">
+            <img *ngFor="let image of request?.images" class="ui small image"
+                 [src]="'data:image/jpg;base64,' + image.content"
+                 (click)="onClick(image)"
+            />
+         </div>
+
    </div>
 
 </div>

@@ -2,6 +2,7 @@ package com.mygaienko.controller;
 
 import com.mygaienko.model.Request;
 import com.mygaienko.model.dto.RequestDescription;
+import com.mygaienko.model.dto.RequestDetails;
 import com.mygaienko.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class RequestController {
     }
 
     @RequestMapping(value = "/byId/{requestId}", method = RequestMethod.GET)
-    public Request findById(@PathVariable("requestId") long requestId) {
+    public RequestDetails findById(@PathVariable("requestId") long requestId) {
         return requestService.findById(requestId);
     }
 
