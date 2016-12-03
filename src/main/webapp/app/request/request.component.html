@@ -4,23 +4,25 @@
       123
       request id: {{request.id}}
 
+      <div class="ui small images">
+         <img *ngFor="let image of request?.images" class="ui small image"
+              [src]="'data:image/jpg;base64,' + image.content"
+              (click)="showModal(image)"/>
+              <!--(click)="imageModal.show({inverted: true})"/>-->
+      </div>
 
-     <!-- <img class="ui big image" *ngIf="request?.images[0]?.content"
-           [src]="'data:image/jpg;base64,' + request?.images[0]?.content"/>-->
-
-      <!--
-      <sm-list class="ui small images">
-         <sm-item *ngFor="let image of request?.images" class="ui small image">
-            <img class="ui small image" [src]="'data:image/jpg;base64,' + image.content"/>
-         </sm-item>
-      </sm-list>
-      -->
-         <div class="ui small images">
-            <img *ngFor="let image of request?.images" class="ui small image"
-                 [src]="'data:image/jpg;base64,' + image.content"
-                 (click)="onClick(image)"
-            />
-         </div>
+      <sm-modal title="Hello from Modal" class="" icon="home" #bigImageModal>
+         <modal-content>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <img class="ui huge image"
+                 *ngIf="selectedImage" [src]="'data:image/jpg;base64,' + selectedImage.content"/>
+         </modal-content>
+         <modal-actions>
+            <div class="ui buttons">
+               <div class="ui button primary" (click)="bigImageModal.hide()">Close modal</div>
+            </div>
+         </modal-actions>
+      </sm-modal>
 
    </div>
 
