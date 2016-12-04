@@ -1,36 +1,38 @@
 <div xmlns="http://www.w3.org/1999/html">
     <div *ngIf="!requests" class="ui active medium text loader"></div>
-    <div>
 
-        <form class="ui form search" [formGroup]="searchForm">
-            <div class="fields">
-                <sm-loader [complete]="!formSubmited" class="inverted" text="Loading..."></sm-loader>
-                <div class="field">
+    <div class="ui horizontal segments">
+
+        <div class="ui segment">
+            <form class="ui form search" [formGroup]="searchForm">
+                <div class="fields">
+                    <sm-loader [complete]="!formSubmited" class="inverted" text="Loading..."></sm-loader>
                     <sm-input [control]="searchForm.controls.surnameControl" class="left labeled"
-                               placeholder="Вкажіть прізвище..."> <!-- label="Прізвище" -->
+                              placeholder="Вкажіть прізвище...">
                     </sm-input>
-                </div>
-                <div class="field">
                     <sm-input [control]="searchForm.controls.idControl" class="left labeled"
-                               placeholder="Вкажіть ідентифікатор...">  <!-- label="Ідентифікатор" -->
+                              placeholder="Вкажіть ідентифікатор...">
                     </sm-input>
-                </div>
-                <div class="field">
                     <sm-input [control]="searchForm.controls.makerControl" class="left labeled"
-                               placeholder="Вкажіть виробника...">  <!-- label="Прилад" -->
+                              placeholder="Вкажіть виробника...">
                     </sm-input>
-                </div>
-                <div class="field">
                     <sm-input [control]="searchForm.controls.productControl" class="left labeled"
-                              placeholder="Вкажіть модель...">  <!-- label="Прилад" -->
+                              placeholder="Вкажіть модель...">
                     </sm-input>
+                    <div class="field">
+                        <sm-button (click)="submit()" [disabled]="!searchForm.valid" class="fluid right-button"
+                                   id="search-form-button">Пошук
+                        </sm-button>
+                    </div>
                 </div>
-                <div class="field">
-                    <sm-button (click)="submit()" [disabled]="!searchForm.valid" class="primary right-button"
-                               id="search-form-button">Пошук</sm-button>
-                </div>
-            </div>
-        </form>
+
+            </form>
+        </div>
+
+        <div class="ui center aligned segment">
+            <i class="add circle big olive icon"></i>
+        </div>
+
     </div>
 
     <div>

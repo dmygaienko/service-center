@@ -1,24 +1,29 @@
 <div>
    <div *ngIf="!request" class="ui active medium text loader"></div>
    <div *ngIf="request">
-      123
-      request id: {{request.id}}
+      <div class="ui teal tag label">request id: {{request.id}}</div>
 
-      <div class="ui small images">
-         <img *ngFor="let image of request?.images" class="ui small image"
-              [src]="'data:image/jpg;base64,' + image.content"
-              (click)="showModal(image)"/>
+      <div *ngIf="request.images?.length > 0" class="ui attached message">
+         <div class="ui small images">
+            <img *ngFor="let image of request?.images" class="ui small image"
+                 [src]="'data:image/jpg;base64,' + image.content"
+                 (click)="showModal(image)"/>
+         </div>
       </div>
 
-      <sm-modal title="Hello from Modal" class="" icon="home" #bigImageModal>
+      <sm-modal class="" icon="settings" #bigImageModal>
          <modal-content>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            <img class="ui centered huge image"
-                 *ngIf="selectedImage" [src]="'data:image/jpg;base64,' + selectedImage.content"/>
+            <div class="ui attached message">
+            {{selectedImage?.description + '.'}}{{selectedImage?.created}}
+            </div>
+            <div class="ui segment">
+               <img class="ui centered huge image"
+                    *ngIf="selectedImage" [src]="'data:image/jpg;base64,' + selectedImage.content"/>
+            </div>
          </modal-content>
          <modal-actions>
             <div class="ui buttons">
-               <div class="ui button primary" (click)="bigImageModal.hide()">Close modal</div>
+               <div class="ui button primary" (click)="bigImageModal.hide()">Close</div>
             </div>
          </modal-actions>
       </sm-modal>
