@@ -5,10 +5,12 @@ import "rxjs/add/operator/switchMap";
 import { RequestDetails } from "../_models/request-details";
 import { Image } from "../_models/image";
 import { SemanticModalComponent } from "ng-semantic";
+import { WorksSharedService } from "../_services/works-shared.service";
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'request.component.html'
+    templateUrl: 'request.component.html',
+    providers: [ WorksSharedService ]
 })
 
 export class RequestComponent implements OnInit {
@@ -19,12 +21,17 @@ export class RequestComponent implements OnInit {
     imageModal: SemanticModalComponent;
 
     constructor(private requestService: RequestService,
-                private route: ActivatedRoute) { }
+                private route: ActivatedRoute,
+                private sharedService: WorksSharedService,
+    ) { }
 
     ngOnInit(): void {
         this.route.params
             .switchMap((params: Params) => this.requestService.getById(params['id']))
-            .subscribe(requestDetails => this.request = requestDetails);
+            .subscribe(requestDetails => {
+                this.request = requestDetails;
+                this.sharedService.addWorks(this.request.works);
+            });
     }
 
     showModal(image: Image): void {
