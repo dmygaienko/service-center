@@ -3,13 +3,15 @@
    <div *ngIf="request">
       <div class="ui teal tag label">request id: {{request.id}}</div>
 
+      <div class="ui small grey header">Фото процесу</div>
       <div *ngIf="request.images?.length > 0" class="ui attached message">
          <div class="ui small images">
-            <img *ngFor="let image of request?.images" class="ui small image"
+            <img *ngFor="let image of request?.images" class="ui small rounded image"
                  [src]="'data:image/jpg;base64,' + image.content"
                  (click)="showModal(image)"/>
          </div>
       </div>
+
 
       <sm-modal class="" icon="settings" #bigImageModal>
          <modal-content>
