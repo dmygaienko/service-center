@@ -13,11 +13,28 @@ import java.util.stream.Collectors;
 public class RequestDetails extends RequestDescription {
 
     private List<ImageDto> images;
+    private List<ComponentDto> components;
+    private List<WorkDto> works;
+    private List<CommentDto> comments;
 
     public RequestDetails(Request request) {
         super(request);
 
-        images = request.getImages().stream().map((image) -> new ImageDto(image)).collect(Collectors.toList());
+        images = request.getImages().stream().map(
+                (image) -> new ImageDto(image)
+        ).collect(Collectors.toList());
+
+        components = request.getComponents().stream().map(
+                (component) -> new ComponentDto(component)
+        ).collect(Collectors.toList());
+
+        works = request.getWorks().stream().map(
+                (work) -> new WorkDto(work)
+        ).collect(Collectors.toList());
+
+        comments = request.getComments().stream().map(
+                (comment) -> new CommentDto(comment)
+        ).collect(Collectors.toList());
     }
 
 }

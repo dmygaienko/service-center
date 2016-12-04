@@ -82,4 +82,7 @@ public class User implements UserDetails {
         return true;
     }
 
+    public String name() {
+        return firstName + " " + surname;
+    }
 }

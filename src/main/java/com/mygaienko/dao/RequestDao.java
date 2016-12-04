@@ -39,6 +39,8 @@ public class RequestDao {
         productJoin.join(Product_.maker, JoinType.LEFT);
 
         root.join(Request_.images, JoinType.LEFT);
+        root.join(Request_.components, JoinType.LEFT);
+        root.join(Request_.works, JoinType.LEFT);
 
         return entityManager.createQuery(query).getSingleResult();
     }

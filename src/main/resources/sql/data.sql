@@ -9,17 +9,10 @@ insert into user_authorities
 (1, 11, 'ROLE_ADMIN'),
 (2, 12, 'ROLE_CLIENT'),
 (3, 13, 'ROLE_MASTER');
- --<user_authorities user_id="1" authorities="ROLE_CLIENT"/>
 
- -- <user id="1" email="email@test.com" first_name="FirstName" surname="SurName" address="Address" password="qwerty1234"
- --          contact_number="ContactNumber"/>
-
-
--- <maker id="1" name="maker1"/>
 insert into maker
 (id, name) values
 (1, 'maker1');
-
 
 insert into product
 (id, name, maker_id) values
@@ -94,13 +87,28 @@ insert into request
 (45, 12, 'REPAIR', 'CREATED', 11, 0),
 (26, 12, 'REPAIR', 'CREATED', 11, 0);
 
+insert into component
+(id, name, price, status, request_id) values
+  (1, 'Заміна клавіатури', 150, 'DONE', 12),
+  (2, 'Чистка ноутбука', 150, 'DONE', 12);
+
+insert into work
+(id, discription, price, status, request_id, master_id) values
+  (1, 'Заміна клавіатури', 150, 'DONE', 12, 13),
+  (2, 'Чистка ноутбука', 150, 'DONE', 12, 13);
+
+insert into comment
+(id, content, user_id, request_id) values
+(1, 'Спасибо за отличную работу!', 12, 12),
+(2, 'Дякуємо, що звернулися до нас! :)', 12, 12);
+
 insert into image
 (id, content, created, description, request_id) values
-  (1, '54455354', parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description', 11),
-  (2, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\maxresdefault.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description1', 12),
-  (3, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\plasma-tv-repair-melbourne.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description2', 12),
-  (4, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\repair1.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description3', 12),
-  (5, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\ремонт-телевизора-мастером.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description4', 12),
-  (6, '', parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description', 13);
+(1, '54455354', parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description', 11),
+(2, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\maxresdefault.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description1', 12),
+(3, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\plasma-tv-repair-melbourne.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description2', 12),
+(4, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\repair1.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description3', 12),
+(5, FILE_READ('C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\ремонт-телевизора-мастером.jpg'), parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description4', 12),
+(6, '', parsedatetime('17-09-2016 18:47', 'dd-MM-yyyy hh:mm'), 'some description', 13);
 
 

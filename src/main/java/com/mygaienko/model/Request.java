@@ -48,6 +48,9 @@ public class Request {
     @OneToMany(mappedBy = "request")
     private List<Component> components;
 
+    @OneToMany(mappedBy = "request")
+    private List<Work> works;
+
     private LocalDateTime datetime;
 
     private BigDecimal price;

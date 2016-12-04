@@ -17,14 +17,12 @@ create table user_authorities
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
---<maker id="1" name="maker1"/>
 create table maker
 (
     id int NOT NULL PRIMARY KEY,
     name varchar(255)
 );
 
---<product id="1" name="product1" maker_id="1"/>
 create table product
 (
     id int NOT NULL PRIMARY KEY,
@@ -33,7 +31,6 @@ create table product
     FOREIGN KEY (maker_id) REFERENCES maker(id)
 );
 
---<request id="2" client_id="2" type="REPAIR" status="CREATED" product_id="1" paid="0" date="2008-08-08 20:08:08"/>
 create table request
 (
     id int NOT NULL PRIMARY KEY,
@@ -48,7 +45,6 @@ create table request
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
---<request id="2" client_id="2" type="REPAIR" status="CREATED" product_id="1" paid="0" date="2008-08-08 20:08:08"/>
 create table component
 (
     id int NOT NULL PRIMARY KEY,
@@ -56,9 +52,19 @@ create table component
     price int,
     status varchar(255),
     request_id int,
-    product_id int,
+    FOREIGN KEY (request_id) REFERENCES request(id)
+);
+
+create table work
+(
+    id int NOT NULL PRIMARY KEY,
+    discription varchar(255),
+    price int,
+    status varchar(255),
+    request_id int,
+    master_id int,
     FOREIGN KEY (request_id) REFERENCES request(id),
-    FOREIGN KEY (product_id) REFERENCES product(id)
+    FOREIGN KEY (master_id) REFERENCES user(id)
 );
 
 create table manual

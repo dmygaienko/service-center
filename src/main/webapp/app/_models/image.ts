@@ -1,6 +1,6 @@
 ﻿export class Image {
     id: string;
     content: Uint8Array[];
-    created: Date;
+    created: string;
     description: string;
 }

@@ -13,13 +13,13 @@ public class ImageDto {
 
     private Long id;
     private byte[] content;
-    private LocalDateTime created;
+    private String created;
     private String description;
 
     public ImageDto(Image image) {
         id = image.getId();
         content = image.getContent();
-        created = image.getCreated();
+        created = image.getCreated().toString();
         description = image.getDescription();
     }
 }

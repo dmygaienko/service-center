@@ -12,14 +12,13 @@
          </div>
       </div>
 
-
       <sm-modal class="" icon="settings" #bigImageModal>
          <modal-content>
             <div class="ui attached message">
-            {{selectedImage?.description + '.'}}{{selectedImage?.created}}
+            {{selectedImage?.description + '.'}} {{selectedImage?.created}}
             </div>
             <div class="ui segment">
-               <img class="ui centered huge image"
+               <img class="ui centered big image"
                     *ngIf="selectedImage" [src]="'data:image/jpg;base64,' + selectedImage.content"/>
             </div>
          </modal-content>

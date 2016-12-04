@@ -6,5 +6,4 @@ package com.mygaienko.model;
 public enum RequestStatus {
 
     CREATED, STARTED, ENDED, CANCELLED, WAITED_FOR_COMPONENTS
-
 }
