@@ -24,10 +24,10 @@ public class Work {
     private WorkStatus status;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="request_id")
     private Request request;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "master_id")
     private User master;
 }

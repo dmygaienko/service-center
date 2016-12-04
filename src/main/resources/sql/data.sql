@@ -89,11 +89,11 @@ insert into request
 
 insert into component
 (id, name, price, status, request_id) values
-  (1, 'Заміна клавіатури', 150, 'DONE', 12),
-  (2, 'Чистка ноутбука', 150, 'DONE', 12);
+  (1, 'Заміна клавіатури', 150, 'ARRIVED', 12),
+  (2, 'Чистка ноутбука', 150, 'ARRIVED', 12);
 
 insert into work
-(id, discription, price, status, request_id, master_id) values
+(id, description, price, status, request_id, master_id) values
   (1, 'Заміна клавіатури', 150, 'DONE', 12, 13),
   (2, 'Чистка ноутбука', 150, 'DONE', 12, 13);
 
