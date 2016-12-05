@@ -1,25 +1,28 @@
 <div xmlns="http://www.w3.org/1999/html">
 
-    <table *ngIf="works?.length > 0" class="ui celled table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>MasterName</th>
-        </tr>
-        </thead>
+    <div class="ui raised segment" *ngIf="works?.length > 0">
+        <table class="ui celled table">
+            <thead>
+            <a class="ui orange ribbon label">Виконані роботи</a>
+            <tr>
+                <th>Id</th>
+                <th>Опис</th>
+                <th>Ціна</th>
+                <th>Статус</th>
+                <th>Мастер</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr *ngFor="let work of works">
-            <td>{{work.id}}</td>
-            <td>{{work.description}}</td>
-            <td>{{work.price}}</td>
-            <td>{{work.status}}</td>
-            <td>{{work.masterName}}</td>
-        </tr>
-        </tbody>
-    </table>
+            <tbody>
+            <tr *ngFor="let work of works">
+                <td>{{work.id}}</td>
+                <td>{{work.description}}</td>
+                <td>{{work.price}}</td>
+                <td>{{work.status}}</td>
+                <td>{{work.masterName}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>

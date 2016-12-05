@@ -3,8 +3,11 @@
    <div *ngIf="request">
       <div class="ui teal tag label">request id: {{request.id}}</div>
 
+      <div class="ui divider"></div>
       <works-table></works-table>
+      <div class="ui divider"></div>
       <components-table></components-table>
+      <div class="ui divider"></div>
 
       <div class="ui small grey header">Фото процесу</div>
       <div *ngIf="request.images?.length > 0" class="ui attached message">
@@ -14,8 +17,6 @@
                  (click)="showModal(image)"/>
          </div>
       </div>
-
-
 
       <sm-modal class="" icon="settings" #bigImageModal>
          <modal-content>
