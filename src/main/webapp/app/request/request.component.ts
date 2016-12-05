@@ -5,12 +5,12 @@ import "rxjs/add/operator/switchMap";
 import { RequestDetails } from "../_models/request-details";
 import { Image } from "../_models/image";
 import { SemanticModalComponent } from "ng-semantic";
-import { WorksSharedService } from "../_services/works-shared.service";
+import { RequestSharedService } from "../_services/index";
 
 @Component({
     moduleId: module.id,
     templateUrl: 'request.component.html',
-    providers: [ WorksSharedService ]
+    providers: [ RequestSharedService ]
 })
 
 export class RequestComponent implements OnInit {
@@ -22,7 +22,7 @@ export class RequestComponent implements OnInit {
 
     constructor(private requestService: RequestService,
                 private route: ActivatedRoute,
-                private sharedService: WorksSharedService,
+                private sharedService: RequestSharedService,
     ) { }
 
     ngOnInit(): void {
@@ -31,6 +31,7 @@ export class RequestComponent implements OnInit {
             .subscribe(requestDetails => {
                 this.request = requestDetails;
                 this.sharedService.addWorks(this.request.works);
+                this.sharedService.addComponents(this.request.components);
             });
     }
 

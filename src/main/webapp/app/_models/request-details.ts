@@ -1,9 +1,9 @@
-﻿import { Request, Image, Component, Work } from "./index";
+﻿import { Request, Image, DetailComponent, Work } from "./index";
 
 export class RequestDetails extends Request {
 
     images: Image[];
-    components: Component[];
+    components: DetailComponent[];
     works: Work[];
     comments: Comment[];
 }

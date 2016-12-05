@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Work } from "../_models/work";
-import { WorksSharedService } from "../_services/works-shared.service";
+import { RequestSharedService } from "../_services/index";
 import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
@@ -13,7 +13,7 @@ export class WorksComponent {
     works: Work[];
     subscription: Subscription;
 
-    constructor(private sharedService: WorksSharedService) {
+    constructor(private sharedService: RequestSharedService) {
         this.subscription = this.sharedService.works$
             .subscribe(works => {
                 this.works = works

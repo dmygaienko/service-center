@@ -1,4 +1,4 @@
-﻿export class Component {
+﻿export class DetailComponent {
 
     id: string;
     name: string;
