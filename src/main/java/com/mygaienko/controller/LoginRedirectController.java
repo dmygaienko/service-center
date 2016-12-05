@@ -17,4 +17,9 @@ public class LoginRedirectController {
         //model.addAttribute("attribute", "redirectWithRedirectAttributes");
         return new ModelAndView("redirect:/", model);
     }
+
+    @RequestMapping(value = "/{[path:[^\\.]*}")
+    public String redirect() {
+        return "forward:/";
+    }
 }

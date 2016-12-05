@@ -59,7 +59,6 @@ create table work
 (
     id int NOT NULL PRIMARY KEY,
     description varchar(255),
-    description varchar(255),
     price int,
     status varchar(255),
     request_id int,
