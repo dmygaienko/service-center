@@ -1,6 +1,7 @@
 package com.mygaienko.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@EqualsAndHashCode(of = "id")
 public class Manual {
 
     @Id
@@ -20,7 +22,7 @@ public class Manual {
 
     private String name;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn
     private Product product;
 }

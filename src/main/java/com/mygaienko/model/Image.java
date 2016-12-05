@@ -1,6 +1,7 @@
 package com.mygaienko.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
+@EqualsAndHashCode(of = "id")
 public class Image {
 
     @Id
@@ -32,4 +34,6 @@ public class Image {
     @ManyToOne
     @JoinColumn
     private Request request;
+
+
 }

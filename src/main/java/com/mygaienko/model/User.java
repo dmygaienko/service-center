@@ -1,6 +1,7 @@
 package com.mygaienko.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,6 +22,7 @@ OP_DELETE_ACCOUNT, OP_CREATE_USER, OP_RUN_BATCH_JOBetc. Roles can be ROLE_ADMIN,
 @Data
 @Entity(name = "user")
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
 
     @Id

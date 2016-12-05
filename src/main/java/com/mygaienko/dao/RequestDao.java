@@ -35,12 +35,14 @@ public class RequestDao {
         Root<Request> root = query.from(Request.class);
         query.where(builder.equal(root.get(Request_.id), requestId));
 
-        Join<Request, Product> productJoin = root.join(Request_.product, JoinType.LEFT);
-        productJoin.join(Product_.maker, JoinType.LEFT);
+        Fetch<Request, Product> productJoin = root.fetch(Request_.product, JoinType.LEFT);
+        productJoin.fetch(Product_.maker, JoinType.LEFT);
+        /*productJoin.fetch(Product_.manual, JoinType.LEFT);*/
 
-        root.join(Request_.images, JoinType.LEFT);
-        root.join(Request_.components, JoinType.LEFT);
-        root.join(Request_.works, JoinType.LEFT);
+        root.fetch(Request_.comments, JoinType.LEFT);
+        root.fetch(Request_.images, JoinType.LEFT);
+        root.fetch(Request_.components, JoinType.LEFT);
+        root.fetch(Request_.works, JoinType.LEFT);
 
         return entityManager.createQuery(query).getSingleResult();
     }
@@ -83,7 +85,11 @@ public class RequestDao {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Request> query = builder.createQuery(Request.class);
 
-        query.from(Request.class);
+        Root<Request> root = query.from(Request.class);
+
+        Fetch<Request, Product> productJoin = root.fetch(Request_.product, JoinType.LEFT);
+        productJoin.fetch(Product_.maker, JoinType.LEFT);
+        /*productJoin.fetch(Product_.manual, JoinType.LEFT);*/
 
         return entityManager.createQuery(query).getResultList();
     }
@@ -91,11 +97,12 @@ public class RequestDao {
     public void update(Request request) {
         entityManager.merge(request);
     }
+
     /*"'C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\maxresdefault.jpg'" +*/
     public List getImages() {
         Query nativeQuery = entityManager.createNativeQuery(
                 "select LENGTH(FILE_READ(" +
-                       "'classpath:/images/maxresdefault.jpg'" +
+                        "'classpath:/images/maxresdefault.jpg'" +
                         ")) file");
         return nativeQuery.getResultList();
     }

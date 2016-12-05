@@ -1,6 +1,7 @@
 package com.mygaienko.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
  */
 @Data
 @Entity
+@EqualsAndHashCode(of = "id")
 public class Work {
 
     @Id

@@ -2,6 +2,7 @@ package com.mygaienko.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @Entity(name = "product")
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Product {
 
     @Id
@@ -23,10 +25,8 @@ public class Product {
     @JoinColumn
     private Maker maker;
 
-
-
     private String name;
 
-    @OneToOne(mappedBy = "product")
+    @OneToMany(mappedBy = "product")
     private Manual manual;
 }

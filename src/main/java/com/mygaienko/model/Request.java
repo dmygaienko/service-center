@@ -1,26 +1,20 @@
 package com.mygaienko.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by enda1n on 09.11.2016.
  */
 @Data
 @Entity(name = "request")
+@EqualsAndHashCode(of = "id")
 public class Request {
 
     @Id
@@ -40,16 +34,16 @@ public class Request {
     private Product product;
 
     @OneToMany(mappedBy = "request")
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
     @OneToMany(mappedBy = "request")
-    private List<Image> images;
+    private Set<Image> images;
 
     @OneToMany(mappedBy = "request")
-    private List<Component> components;
+    private Set<Component> components;
 
     @OneToMany(mappedBy = "request")
-    private List<Work> works;
+    private Set<Work> works;
 
     private LocalDateTime datetime;
 
