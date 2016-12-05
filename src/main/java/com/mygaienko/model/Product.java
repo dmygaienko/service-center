@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by enda1n on 10.11.2016.
@@ -28,5 +29,5 @@ public class Product {
     private String name;
 
     @OneToMany(mappedBy = "product")
-    private Manual manual;
+    private Set<Manual> manuals;
 }
