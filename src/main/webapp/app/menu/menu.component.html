@@ -10,16 +10,13 @@
 
 </div>
 
-<!--<sm-menu ngIf="isAuthenticated()" title="Angular2"  logo="/assets/images/semantic.png"
+<!--<sm-menu *ngIf="isAuthenticated()" title="Angular2"  logo="/assets/images/semantic.png"
          class="ui stackable container menu" id="menu">
     &lt;!&ndash; class="inverted teal" <a sm-item *ngFor="let item of items" [icon]="item.icon">{{item?.title}}</a>&ndash;&gt;
 
-    <sm-menu class="menu right secondary">
-        <a sm-item href="'/home" image="http://semantic-ui.com/images/avatar/small/stevie.jpg">Home1</a>
-        <a sm-item href="'/requests" image="http://semantic-ui.com/images/avatar/small/stevie.jpg">Requests</a>
-        <a sm-item href="'/employees" image="http://semantic-ui.com/images/avatar/small/stevie.jpg">Our Employees</a>
-        <a sm-item href="'/about" image="http://semantic-ui.com/images/avatar/small/stevie.jpg">About</a>
-        <a sm-item icon="sidebar big"></a>
-    </sm-menu>
+    <a sm-item href="/home" [ngClass]="{'active': 1 == 1}">Home1</a>
+    <a sm-item [routerLink]="['/requests']">Requests1</a>
+    <a sm-item href="/employees">Our Employees</a>
+    <a sm-item href="/about">About</a>
 </sm-menu>-->
 
