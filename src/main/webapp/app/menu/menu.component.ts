@@ -8,6 +8,8 @@ import {AuthenticationService} from "../_services/index";
 })
 
 export class MenuComponent {
+    menuItems = ['home', 'requests', 'employees', 'about'];
+    activeMenu = this.menuItems[0];
 
     constructor(private authenticationService: AuthenticationService) {}
 
@@ -18,4 +20,13 @@ export class MenuComponent {
     hasRole(role:string){
         return this.authenticationService.hasRole(role);
     }
+
+    isActive(menu:string): boolean {
+        return this.activeMenu === menu;
+    }
+
+    setActive(menu:string) {
+        this.activeMenu = menu;
+    }
+
 }
