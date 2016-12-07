@@ -8,7 +8,13 @@ import {AuthenticationService} from "../_services/index";
 })
 
 export class MenuComponent {
-    menuItems = ['home', 'requests', 'employees', 'about'];
+    menuItems = [
+        new MenuComponent.Menu('home', 'Home'),
+        new MenuComponent.Menu('requests', 'Requests'),
+        new MenuComponent.Menu('employees', 'Our Employees'),
+        new MenuComponent.Menu('about', 'About')
+    ];
+
     activeMenu = this.menuItems[0];
 
     constructor(private authenticationService: AuthenticationService) {}
@@ -21,12 +27,22 @@ export class MenuComponent {
         return this.authenticationService.hasRole(role);
     }
 
-    isActive(menu:string): boolean {
-        return this.activeMenu === menu;
+    isActive(i:number): boolean {
+        return this.activeMenu === this.menuItems[i];
     }
 
-    setActive(menu:string) {
-        this.activeMenu = menu;
+    setActive(i:number) {
+        this.activeMenu = this.menuItems[i];
+    }
+
+    static Menu = class {
+        route;
+        description;
+
+        constructor(route:string, description:string) {
+            this.route = route;
+            this.description = description;
+        }
     }
 
 }

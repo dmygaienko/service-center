@@ -14,11 +14,10 @@
          class="ui stackable container menu" id="menu">
     <!-- class="inverted teal" <a sm-item *ngFor="let item of items" [icon]="item.icon">{{item?.title}}</a>-->
 
-    <a sm-item [routerLink]="['/home']" [ngClass]="{'active': isActive('home')}"
-       (click)="setActive('home')">Home1</a>
-    <a sm-item [routerLink]="['/requests']" *ngIf="hasRole('ROLE_ADMIN')" [ngClass]="{'active': isActive('requests')}"
-       (click)="setActive('requests')">Requests</a>
-    <a sm-item [routerLink]="['/employees']" [ngClass]="{'active': isActive('employees')}">Our Employees</a>
-    <a sm-item [routerLink]="['/about']" [ngClass]="{'active': isActive('about')}">About</a>
+    <a sm-item *ngFor="let item of menuItems; let i = index"
+       [routerLink]="['/' + item.route]"
+       [ngClass]="{'active': isActive(i)}"
+       (click)="setActive(i)">{{item.description}}</a>
+
 </sm-menu>
 

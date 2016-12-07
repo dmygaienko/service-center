@@ -9,7 +9,6 @@ import {User} from "../_models/user";
 export class AuthenticationService {
     constructor(private http: Http) { }
 
-
     login(username, password) {
         var headers = new Headers();
         /*headers.append('Content-Type', 'application/json');*/
