@@ -1,4 +1,4 @@
-<div *ngIf="isAuthenticated()" class="ui stackable container menu" id="menu">
+<!--<div *ngIf="isAuthenticated()" class="ui stackable container menu" id="menu">
 
     <a [routerLink]="['/home']" class="btn item">Home</a>
 
@@ -8,15 +8,16 @@
 
     <a [routerLink]="['/about']" class="btn item">About</a>
 
-</div>
+</div>-->
 
-<!--<sm-menu *ngIf="isAuthenticated()" title="Angular2"  logo="/assets/images/semantic.png"
+<sm-menu *ngIf="isAuthenticated()" icon="Settings" logo="/images/logo.png"
          class="ui stackable container menu" id="menu">
-    &lt;!&ndash; class="inverted teal" <a sm-item *ngFor="let item of items" [icon]="item.icon">{{item?.title}}</a>&ndash;&gt;
+    <!-- class="inverted teal" <a sm-item *ngFor="let item of items" [icon]="item.icon">{{item?.title}}</a>-->
 
-    <a sm-item href="/home" [ngClass]="{'active': 1 == 1}">Home1</a>
-    <a sm-item [routerLink]="['/requests']">Requests1</a>
-    <a sm-item href="/employees">Our Employees</a>
-    <a sm-item href="/about">About</a>
-</sm-menu>-->
+    <a sm-item *ngFor="let item of menuItems; let i = index"
+       [routerLink]="['/' + item.route]"
+       [ngClass]="{'active': isActive(i)}"
+       (click)="setActive(i)">{{item.description}}</a>
+
+</sm-menu>
 
