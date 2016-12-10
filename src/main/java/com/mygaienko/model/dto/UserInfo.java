@@ -31,8 +31,11 @@ public class UserInfo {
     }
 
     public UserInfo(Authentication authentication) {
-        authenticated = authentication.isAuthenticated();
-        username = authentication.getName();
-        authorities = authentication.getAuthorities();
+        if (authentication != null) {
+            authenticated = authentication.isAuthenticated();
+            username = authentication.getName();
+            authorities = authentication.getAuthorities();
+        }
     }
+
 }

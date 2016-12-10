@@ -1,4 +1,5 @@
 ﻿export class User {
+    authenticated: boolean;
     username: string;
     password: string;
     firstName: string;

@@ -72,8 +72,9 @@ insert into request
 (21, 11, 'REPAIR', 'CREATED', 7, 0),
 (22, 12, 'REPAIR', 'CREATED', 8, 0),
 (23, 12, 'REPAIR', 'CREATED', 9, 0),
-(24, 12, 'REPAIR', 'CREATED', 10, 0),
-(25, 12, 'REPAIR', 'CREATED', 11, 0),
+(24, 12, 'REPAIR', 'CREATED', 10, 0);
+
+/*(25, 12, 'REPAIR', 'CREATED', 11, 0),
 (31, 11, 'REPAIR', 'CREATED', 2, 0),
 (32, 12, 'REPAIR', 'CREATED', 3, 0),
 (33, 12, 'REPAIR', 'CREATED', 3, 0),
@@ -85,7 +86,7 @@ insert into request
 (43, 12, 'REPAIR', 'CREATED', 9, 0),
 (44, 12, 'REPAIR', 'CREATED', 10, 0),
 (45, 12, 'REPAIR', 'CREATED', 11, 0),
-(26, 12, 'REPAIR', 'CREATED', 11, 0);
+(26, 12, 'REPAIR', 'CREATED', 11, 0),*/
 
 insert into component
 (id, name, price, status, request_id) values
