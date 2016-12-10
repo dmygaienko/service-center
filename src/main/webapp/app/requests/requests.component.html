@@ -30,8 +30,10 @@
         </div>
 
         <div class="ui center aligned segment">
-            <i class="add circle big olive icon"></i>
+            <i class="add circle big olive icon" (click) = createNewRequest()></i>
         </div>
+
+        <new-request-modal #newRequestComponent></new-request-modal>
 
     </div>
 

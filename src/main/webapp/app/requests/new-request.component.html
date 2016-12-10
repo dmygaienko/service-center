@@ -1,0 +1,28 @@
+<div xmlns="http://www.w3.org/1999/html">
+
+
+    <sm-modal class="" #modal>
+        <modal-content>
+            <form class="ui form" [formGroup]="newRequestForm">
+
+                <sm-input label="Client" [control]="newRequestForm.controls.client" placeholder="Enter client...">
+                </sm-input> 
+                <sm-input label="Type" [control]="newRequestForm.controls.type" placeholder="Enter type...">
+                </sm-input> 
+                <sm-input label="Status" [control]="newRequestForm.controls.status" placeholder="Enter status...">
+                </sm-input> 
+                <sm-input label="Product" [control]="newRequestForm.controls.productDescription" placeholder="Enter product...">
+                </sm-input>
+
+                <sm-button (click)="save()" [disabled]="!newRequestForm.valid" class="ui basic button">Зберегти</sm-button>
+            </form>
+        </modal-content>
+       <!-- <modal-actions>
+            <div class="ui buttons">
+                <div class="ui button primary" (click)="modal.hide()">Close</div>
+            </div>
+        </modal-actions>-->
+    </sm-modal>
+
+
+</div>

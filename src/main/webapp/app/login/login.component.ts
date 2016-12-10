@@ -15,12 +15,12 @@ export class LoginComponent implements OnInit {
     formSubmitted = false;
 
     constructor(
-        fb: FormBuilder,
+        formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService)
     {
-        this.loginForm = fb.group({
+        this.loginForm = formBuilder.group({
             'emailControl': new FormControl('', Validators.compose([
                 Validators.required, Validators.minLength(4),
                 Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$'),

@@ -17,7 +17,7 @@ import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, RequestSharedService, RequestService } from './_services/index';
 import { HomeComponent } from './home/index';
-import { RequestsComponent } from './requests/index';
+import { RequestsComponent, NewRequestComponent } from './requests/index';
 import { RequestComponent } from './request/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -47,6 +47,7 @@ import {  } from "./components/components.component";
         HomeComponent,
         RequestsComponent,
         RequestComponent,
+        NewRequestComponent,
         ComponentsComponent,
         MenuComponent,
         LoginComponent,
