@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionFixation().migrateSession()
                 .and()
                     .authorizeRequests()
-                        .antMatchers("/css/**", "/index").permitAll()
+                        .antMatchers("/css/**", "/index", "/h2-console/**").permitAll()
                         .antMatchers("/user*").hasAnyRole("ADMIN", "USER")
                 .and()
                     .formLogin().loginPage("/login").successHandler(authenticationSuccessHandler())
