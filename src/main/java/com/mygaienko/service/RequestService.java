@@ -3,6 +3,7 @@ package com.mygaienko.service;
 import com.mygaienko.dao.RequestDao;
 import com.mygaienko.dao.UserDao;
 import com.mygaienko.model.Request;
+import com.mygaienko.model.RequestStatus;
 import com.mygaienko.model.dto.RequestDescription;
 import com.mygaienko.model.dto.RequestDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class RequestService {
 
     @Autowired
     private RequestDao requestDao;
+
+    @Autowired
+    private PhotoScheduler photoScheduler;
 
     @Autowired
     private UserDao userDao;
@@ -47,6 +51,18 @@ public class RequestService {
         return toDescriptionDto(requestDao.getAll());
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER')")
+    public void startWork(long requestId) {
+        photoScheduler.startPhotoShooting(requestId);
+        updateStatus(requestId, RequestStatus.STARTED);
+    }
+
+    private void updateStatus(long requestId, RequestStatus started) {
+        Request request = requestDao.findById(requestId);
+        request.setStatus(started);
+        requestDao.update(request);
+    }
+
     private List<RequestDescription> toDescriptionDto(List<Request> list) {
         return list.stream()
                 .map(product -> new RequestDescription(product))
@@ -55,5 +71,10 @@ public class RequestService {
 
     public void updateRequest(Request request, long cliendId) {
         requestDao.update(request);
+    }
+
+    public boolean statusIsStarted(long requestId) {
+        Request request = requestDao.findById(requestId);
+        return request.getStatus().equals(RequestStatus.STARTED);
     }
 }
