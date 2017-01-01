@@ -1,5 +1,8 @@
 package com.mygaienko.controller;
 
+import com.mygaienko.model.Product;
+import com.mygaienko.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -7,4 +10,13 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ProductController {
+
+    @Autowired
+    private ProductService productService;
+
+    public void createProduct(Product product) {}
+
+    public void editProduct(Product product) {}
+
+    public void deleteProduct(Product product) {}
 }

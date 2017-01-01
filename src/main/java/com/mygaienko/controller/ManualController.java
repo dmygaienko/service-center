@@ -1,5 +1,8 @@
 package com.mygaienko.controller;
 
+import com.mygaienko.model.Manual;
+import com.mygaienko.service.ManualService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -7,4 +10,11 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class ManualController {
+
+    @Autowired
+    private ManualService manualService;
+
+    public void createManual(Manual manual){}
+
+    public void deleteManual(Manual manual){}
 }
