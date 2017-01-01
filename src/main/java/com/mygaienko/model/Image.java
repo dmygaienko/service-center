@@ -36,4 +36,10 @@ public class Image {
     private Request request;
 
 
+    public Image(byte[] content) {
+        this.content = content;
+    }
+
+    public Image() {
+    }
 }

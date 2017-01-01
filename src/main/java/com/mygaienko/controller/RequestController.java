@@ -39,6 +39,11 @@ public class RequestController {
         return requestService.findByAttributes(request);
     }
 
+    @RequestMapping(value = "/startWork", method = RequestMethod.POST)
+    public void startWork(@RequestBody long requestId) {
+       requestService.startWork(requestId);
+    }
+
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public List<RequestDescription> getAll() {
         return requestService.getAll();
