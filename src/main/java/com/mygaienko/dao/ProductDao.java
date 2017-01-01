@@ -1,5 +1,6 @@
 package com.mygaienko.dao;
 
+import com.mygaienko.model.Product;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,4 +8,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class ProductDao {
+
+    public void createProduct(Product product) {};
+
+    public void editProduct(Product product) {};
+
+    public void deleteProduct(Product product) {};
 }

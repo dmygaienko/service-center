@@ -1,5 +1,6 @@
 package com.mygaienko.dao;
 
+import com.mygaienko.model.Manual;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,4 +8,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class ManualDao {
+
+    public void createManual(Manual manual){}
+
+    public void deleteManual(Manual manual){}
 }

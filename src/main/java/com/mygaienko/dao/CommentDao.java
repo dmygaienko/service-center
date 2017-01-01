@@ -1,5 +1,6 @@
 package com.mygaienko.dao;
 
+import com.mygaienko.model.Comment;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,4 +8,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class CommentDao {
+
+    public void createComment(Comment comment){}
+
+    public void editComment(Comment comment) {}
+
+    public void deleteComment(Comment comment){}
 }
