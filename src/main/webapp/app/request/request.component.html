@@ -3,6 +3,11 @@
    <div *ngIf="request">
       <div class="ui teal tag label">request id: {{request.id}}</div>
 
+      <div class="ui olive segment">
+         <p>Замовник: {{request.client}}</p>
+         <p>Ціна: {{request.price}}</p>
+      </div>
+
       <div class="ui hidden divider"></div>
       <works-table></works-table>
       <div class="ui divider"></div>

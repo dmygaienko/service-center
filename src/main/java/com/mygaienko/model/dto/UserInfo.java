@@ -16,6 +16,7 @@ import java.util.Collection;
 public class UserInfo {
 
     private boolean authenticated = false;
+    private long id;
     private String email;
     private String username;
     private String surname;
@@ -24,6 +25,7 @@ public class UserInfo {
 
     public UserInfo(User user) {
         authenticated = true;
+        id = user.getId();
         email = user.getEmail();
         username = user.getUsername();
         surname = user.getSurname();

@@ -5,6 +5,8 @@ import com.mygaienko.model.RequestStatus;
 import com.mygaienko.model.RequestType;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * Created by enda1n on 12.11.2016.
  */
@@ -16,6 +18,7 @@ public class RequestDescription {
     private final RequestType type;
     private final RequestStatus status;
     private final String productDescription;
+    private final BigDecimal price;
     private final boolean paid;
 
     public RequestDescription(Request request) {
@@ -24,6 +27,7 @@ public class RequestDescription {
         type = request.getType();
         status = request.getStatus();
         productDescription = request.getMakerName() + " " + request.getProductName();
+        price = request.getPrice();
         paid = request.isPaid();
     }
 

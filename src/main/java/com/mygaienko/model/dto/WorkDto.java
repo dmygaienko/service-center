@@ -16,13 +16,14 @@ public class WorkDto {
     private String description;
     private BigDecimal price;
     private WorkStatus status;
-    private String masterName;
+    private UserInfo master;
 
     public WorkDto(Work work) {
         id = work.getId();
         description = work.getDescription();
         price = work.getPrice();
         status = work.getStatus();
-        masterName = work.getMaster().name();
+        master = new UserInfo(work.getMaster());
     }
+
 }
