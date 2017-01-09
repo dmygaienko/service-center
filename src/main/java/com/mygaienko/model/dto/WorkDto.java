@@ -3,6 +3,7 @@ package com.mygaienko.model.dto;
 import com.mygaienko.model.Work;
 import com.mygaienko.model.WorkStatus;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
  * Created by enda1n on 03.12.2016.
  */
 @Data
+@NoArgsConstructor
 public class WorkDto {
 
     private Long id;

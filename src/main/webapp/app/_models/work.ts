@@ -7,4 +7,11 @@ export class Work {
     status: string;
     master: UserInfo;
 
+
+    constructor(description: string, price: string, status: string, master: UserInfo) {
+        this.description = description;
+        this.price = price;
+        this.status = status;
+        this.master = master;
+    }
 }
