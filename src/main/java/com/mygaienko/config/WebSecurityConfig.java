@@ -3,8 +3,10 @@ package com.mygaienko.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mygaienko.model.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,8 +20,12 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.OutputStream;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * Created by enda1n on 09.11.2016.
@@ -89,5 +95,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(16);
     }
+
+    /*@Bean
+    public ErrorViewResolver supportPathBasedLocationStrategyWithoutHashes() {
+        return (request, status, model) -> status == HttpStatus.NOT_FOUND
+                ? new ModelAndView("index.html", Collections.emptyMap(), HttpStatus.OK)
+                : null;
+    }*/
 
 }
