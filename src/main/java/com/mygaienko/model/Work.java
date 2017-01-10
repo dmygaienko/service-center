@@ -10,12 +10,12 @@ import java.math.BigDecimal;
  * Created by enda1n on 12.11.2016.
  */
 @Data
-@Entity
+@Entity(name = "work")
 @EqualsAndHashCode(of = "id")
 public class Work {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;

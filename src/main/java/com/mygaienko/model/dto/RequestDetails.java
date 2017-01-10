@@ -3,6 +3,7 @@ package com.mygaienko.model.dto;
 import com.mygaienko.model.Request;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,8 +18,8 @@ public class RequestDetails extends RequestDescription {
     private List<WorkDto> works;
     private List<CommentDto> comments;
 
-    public RequestDetails(Request request) {
-        super(request);
+    public RequestDetails(Request request, BigDecimal price) {
+        super(request, price);
 
         images = request.getImages().stream().map(
                 (image) -> new ImageDto(image)

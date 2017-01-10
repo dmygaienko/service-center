@@ -19,6 +19,7 @@ public class WorkDto {
     private BigDecimal price;
     private WorkStatus status;
     private UserInfo master;
+    private long requestId;
 
     public WorkDto(Work work) {
         id = work.getId();

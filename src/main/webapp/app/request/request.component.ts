@@ -30,6 +30,7 @@ export class RequestComponent implements OnInit {
             .switchMap((params: Params) => this.requestService.getById(params['id']))
             .subscribe(requestDetails => {
                 this.request = requestDetails;
+                this.sharedService.addRequest(this.request);
                 this.sharedService.addWorks(this.request.works);
                 this.sharedService.addComponents(this.request.components);
             });

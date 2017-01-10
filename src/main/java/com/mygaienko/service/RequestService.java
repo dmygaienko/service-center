@@ -2,8 +2,10 @@ package com.mygaienko.service;
 
 import com.mygaienko.dao.RequestDao;
 import com.mygaienko.dao.UserDao;
+import com.mygaienko.model.Component;
 import com.mygaienko.model.Request;
 import com.mygaienko.model.RequestStatus;
+import com.mygaienko.model.Work;
 import com.mygaienko.model.dto.RequestDescription;
 import com.mygaienko.model.dto.RequestDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,7 +41,8 @@ public class RequestService {
     @PostAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER') OR " +
             "(hasRole('ROLE_CLIENT') AND returnObject.client.email == authentication.name)")
     public RequestDetails findById(long requestId) {
-        return new RequestDetails(requestDao.findById(requestId));
+        Request request = requestDao.findById(requestId);
+        return new RequestDetails(request, calculatePrice(request));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MASTER')")
@@ -65,8 +69,18 @@ public class RequestService {
 
     private List<RequestDescription> toDescriptionDto(List<Request> list) {
         return list.stream()
-                .map(product -> new RequestDescription(product))
+                .map(request -> new RequestDescription(request, calculatePrice(request)))
                 .collect(Collectors.toList());
+    }
+
+    private BigDecimal calculatePrice(Request request) {
+        BigDecimal componentsPrice = request.getComponents().stream()
+                .map(Component::getPrice)
+                .reduce(new BigDecimal(0), BigDecimal::add);
+
+        return request.getWorks().stream()
+                .map(Work::getPrice)
+                .reduce(componentsPrice, BigDecimal::add);
     }
 
     public void updateRequest(Request request, long cliendId) {

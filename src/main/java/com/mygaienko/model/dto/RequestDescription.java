@@ -21,13 +21,13 @@ public class RequestDescription {
     private final BigDecimal price;
     private final boolean paid;
 
-    public RequestDescription(Request request) {
+    public RequestDescription(Request request, BigDecimal price) {
         id = request.getId();
         client = request.getClient().getFirstName() + " " + request.getClient().getSurname();
         type = request.getType();
         status = request.getStatus();
         productDescription = request.getMakerName() + " " + request.getProductName();
-        price = request.getPrice();
+        this.price = price;
         paid = request.isPaid();
     }
 

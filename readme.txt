@@ -18,6 +18,7 @@ https://github.com/cornflourblue/angular2-registration-login-example
 ассоциация с element[prop] = 'value';
 так же есть возможность мэпить интерполируемое значение, так же как это было в AngularJS:
 <input value="{{ valueExpression }}" placeholder="{{ placeholderExpression }}" />
+часто с использованием @Input() title:string; в Компоненте
 
 2. подписаться на события
 <button (click)="doSomething($event)"> // это сахар для

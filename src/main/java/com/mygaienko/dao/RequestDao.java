@@ -1,11 +1,6 @@
 package com.mygaienko.dao;
 
-import com.mygaienko.model.Maker;
-import com.mygaienko.model.Maker_;
-import com.mygaienko.model.Product;
-import com.mygaienko.model.Product_;
-import com.mygaienko.model.Request;
-import com.mygaienko.model.Request_;
+import com.mygaienko.model.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -105,5 +100,9 @@ public class RequestDao {
                         "'classpath:/images/maxresdefault.jpg'" +
                         ")) file");
         return nativeQuery.getResultList();
+    }
+
+    public Request load(long id) {
+        return entityManager.getReference(Request.class, id);
     }
 }

@@ -3,6 +3,7 @@ import { Work } from "../_models/work";
 import { RequestSharedService } from "../_services/index";
 import { Subscription }   from 'rxjs/Subscription';
 import { NewWorkComponent } from "./new-work.component";
+import { RequestDetails } from "../_models/request-details";
 
 @Component({
     selector: 'works-table',
@@ -11,17 +12,28 @@ import { NewWorkComponent } from "./new-work.component";
 })
 
 export class WorksComponent {
+
+    requestSubscription: Subscription;
+    requestDetails: RequestDetails;
+
     works: Work[];
-    subscription: Subscription;
+    worksSubscription: Subscription;
 
     @ViewChild('newWorkComponent')
     newWorkComponent: NewWorkComponent;
 
     constructor(private sharedService: RequestSharedService) {
-        this.subscription = this.sharedService.works$
+        this.worksSubscription = this.sharedService.works$
             .subscribe(works => {
                 this.works = works
-            });
+            })
+            ;
+
+        this.requestSubscription = this.sharedService.request$
+            .subscribe(requestDetails => {
+                this.requestDetails = requestDetails
+            })
+        ;
     }
 
     createNewWork(): void {

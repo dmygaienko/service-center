@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from "@angular/core";
+import { Component, ViewChild, AfterViewInit, ElementRef, Input } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { SemanticModalComponent } from "ng-semantic";
 import { Work } from "../_models/work";
@@ -20,6 +20,9 @@ export class NewWorkComponent implements AfterViewInit {
     @ViewChild("newWorkModal")
     newWorkModal: SemanticModalComponent;
 
+    @Input('requestId')
+    requestId: string;
+
     constructor(formBuilder: FormBuilder, private workService: WorkService, private elementRef: ElementRef) {
         this.newWorkForm = formBuilder.group({
             'description': new FormControl(''),
@@ -38,7 +41,8 @@ export class NewWorkComponent implements AfterViewInit {
             this.newWorkForm.value.description,
             this.newWorkForm.value.price,
             this.newWorkForm.value.status,
-            new UserInfo(this.newWorkForm.value.master)
+            new UserInfo(this.newWorkForm.value.master),
+            this.requestId
         );
 
 
