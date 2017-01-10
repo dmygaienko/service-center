@@ -53,6 +53,7 @@ export class NewWorkComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(){
-        jQuery(this.elementRef.nativeElement).find('.search.selection.dropdown').dropdown({allowTab:false});
+        jQuery(this.elementRef.nativeElement).find('.search.selection.dropdown.status').dropdown({allowTab:false});
+        jQuery(this.elementRef.nativeElement).find('.search.selection.dropdown.master').dropdown({allowTab:false});
     }
 }

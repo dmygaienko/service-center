@@ -4,23 +4,34 @@
         <modal-content>
             <form class="ui form" [formGroup]="newWorkForm">
 
-                <sm-input label="Client" [control]="newWorkForm.controls.description" placeholder="Enter description...">
+                <sm-input label="Description" [control]="newWorkForm.controls.description" placeholder="Enter description...">
                 </sm-input>
                 <sm-input label="Type" [control]="newWorkForm.controls.price" placeholder="Enter price...">
                 </sm-input>
-                <sm-input label="Status" [control]="newWorkForm.controls.status" placeholder="Enter status...">
-                </sm-input>
-             <!--   <sm-input label="Product" [control]="newWorkForm.controls.master" placeholder="Enter master...">
-                </sm-input>-->
-                <div class="ui fluid search selection dropdown">
+
+                <div class="ui fluid search selection dropdown status">
+                    <label>Status</label>
+                    <input #statusInput type="hidden" formControlName="status" (change)="newWorkForm.controls.status.setValue(statusInput.value)">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select status</div>
+                    <div class="menu">
+                        <div class="item" data-value="CREATED">CREATED</div>
+                        <div class="item" data-value="STARTED">STARTED</div>
+                        <div class="item" data-value="DONE">DONE</div>
+                        <div class="item" data-value="CANCELLED">CANCELLED</div>
+                        <div class="item" data-value="WAITED_FOR_COMPONENTS">WAITED_FOR_COMPONENTS</div>
+                    </div>
+                </div>
+
+                <div class="ui fluid search selection dropdown master">
                     <label>Master</label>
                     <input #masterInput type="hidden" formControlName="master" (change)="newWorkForm.controls.master.setValue(masterInput.value)">
                     <i class="dropdown icon"></i>
                     <div class="default text">Select master</div>
                     <div class="menu">
-                        <div class="item" data-value="13"><i class="af flag"></i>first_name13</div>
-                        <div class="item" data-value="14"><i class="ax flag"></i>first_name14</div>
-                        <div class="item" data-value="15"><i class="al flag"></i>first_name15</div>
+                        <div class="item" data-value="13">first_name13</div>
+                        <div class="item" data-value="14">first_name14</div>
+                        <div class="item" data-value="15">first_name15</div>
                     </div>
                 </div>
                 <sm-button (click)="save()" [disabled]="!newWorkForm.valid" class="ui basic button">Зберегти</sm-button>
