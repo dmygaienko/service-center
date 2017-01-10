@@ -12,12 +12,20 @@
                 </sm-input>
              <!--   <sm-input label="Product" [control]="newWorkForm.controls.master" placeholder="Enter master...">
                 </sm-input>-->
-                <div class="field">
+                <div class="ui fluid search selection dropdown">
                     <label>Master</label>
-                    <input class="ui input" type="text" formControlName="master" placeholder="Enter master...">
+                    <input #masterInput type="hidden" formControlName="master" (change)="newWorkForm.controls.master.setValue(masterInput.value)">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select master</div>
+                    <div class="menu">
+                        <div class="item" data-value="13"><i class="af flag"></i>first_name13</div>
+                        <div class="item" data-value="14"><i class="ax flag"></i>first_name14</div>
+                        <div class="item" data-value="15"><i class="al flag"></i>first_name15</div>
+                    </div>
                 </div>
                 <sm-button (click)="save()" [disabled]="!newWorkForm.valid" class="ui basic button">Зберегти</sm-button>
             </form>
+
         </modal-content>
         <!-- <modal-actions>
              <div class="ui buttons">

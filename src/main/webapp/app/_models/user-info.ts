@@ -6,4 +6,7 @@
     surname: string;
     authorities: string[];
 
+    constructor(id: string) {
+        this.id = id;
+    }
 }
