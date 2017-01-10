@@ -10,9 +10,12 @@
                 </sm-input>
                 <sm-input label="Status" [control]="newWorkForm.controls.status" placeholder="Enter status...">
                 </sm-input>
-                <sm-input label="Product" [control]="newWorkForm.controls.master" placeholder="Enter master...">
-                </sm-input>
-
+             <!--   <sm-input label="Product" [control]="newWorkForm.controls.master" placeholder="Enter master...">
+                </sm-input>-->
+                <div class="field">
+                    <label>Master</label>
+                    <input class="ui input" type="text" formControlName="master" placeholder="Enter master...">
+                </div>
                 <sm-button (click)="save()" [disabled]="!newWorkForm.valid" class="ui basic button">Зберегти</sm-button>
             </form>
         </modal-content>
