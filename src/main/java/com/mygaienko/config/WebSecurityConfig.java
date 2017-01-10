@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.ForwardAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ import java.util.Map;
  * Created by enda1n on 09.11.2016.
  */
 @Configuration
+//@WebAppConfiguration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -54,12 +56,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/css/**", "/index", "/h2-console/**").permitAll()
                         .antMatchers("/user*").hasAnyRole("ADMIN", "USER")
                 .and()
-                    .formLogin().loginPage("/login").successHandler(authenticationSuccessHandler())
+                    .formLogin().loginPage("/api/login").successHandler(authenticationSuccessHandler())
                     .failureHandler(authenticationFailureHandler())
+                .and()
+                    .logout().logoutUrl("/api/logout")
                 .and()
                     .rememberMe().tokenValiditySeconds(6000)
                 .and()
-                    .x509();
+                    .x509()
+              ;
     }
 
     @Autowired
@@ -69,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
-        return new ForwardAuthenticationSuccessHandler("/user/me");
+        return new ForwardAuthenticationSuccessHandler("/api/user/me");
     }
 
     @Bean

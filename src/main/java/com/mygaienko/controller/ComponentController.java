@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by enda1n on 09.01.2017.
  */
 @RestController
-@RequestMapping("/components")
+@RequestMapping("/api/components")
 public class ComponentController {
 
     @Autowired

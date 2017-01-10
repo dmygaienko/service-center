@@ -12,14 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginRedirectController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/login", method = RequestMethod.GET)
     public ModelAndView redirectWithPrefix(ModelMap model) {
         //model.addAttribute("attribute", "redirectWithRedirectAttributes");
         return new ModelAndView("redirect:/", model);
     }
 
-    @RequestMapping(value = "/{[path:[^\\.]*}")
+    @RequestMapping(value = "/**/{[path:[^\\.]*}")
     public String redirect() {
-        return "forward:/";
+        return "forward:/index.html";
     }
 }

@@ -15,7 +15,7 @@ export class AuthenticationService {
         headers.append('X-Requested-With', 'XMLHttpRequest');
 
       /*  return this.http.post('/login', JSON.stringify({ username: username, password: password }),*/
-        return this.http.post('/login', "username=" + username + "&password=" + password, {headers})
+        return this.http.post('/api/login', "username=" + username + "&password=" + password, {headers})
             .map((response: Response) => {
                 if (response) {
                     let user = response.json();
@@ -30,7 +30,7 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage to log user out
-        this.http.post('/logout', {})
+        this.http.post('/api/logout', {})
             .subscribe(response => sessionStorage.removeItem('currentUser'));
         ;
     }

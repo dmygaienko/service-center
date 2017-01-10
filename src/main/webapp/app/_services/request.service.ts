@@ -10,11 +10,11 @@ export class RequestService {
     }
 
     getAll(): Observable<Request[]> {
-        return this.http.get('/request/getAll').map((response: Response) => <Request[]> response.json());
+        return this.http.get('/api/request/getAll').map((response: Response) => <Request[]> response.json());
     }
 
     getById(id: number | string): Observable<RequestDetails> {
-        return this.http.get('/request/byId/' + id).map((response: Response) => <RequestDetails> response.json());
+        return this.http.get('/api/request/byId/' + id).map((response: Response) => <RequestDetails> response.json());
     }
 
 }
