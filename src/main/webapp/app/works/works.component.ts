@@ -1,7 +1,7 @@
-import {Component, OnInit, AfterViewInit, ViewChild, EventEmitter, Output} from "@angular/core";
+import { Component, ViewChild, EventEmitter, Output } from "@angular/core";
 import { Work } from "../_models/work";
 import { RequestSharedService } from "../_services/index";
-import { Subscription }   from 'rxjs/Subscription';
+import { Subscription } from "rxjs/Subscription";
 import { NewWorkComponent } from "./new-work.component";
 import { RequestDetails } from "../_models/request-details";
 

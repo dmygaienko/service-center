@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by enda1n on 09.01.2017.
  */
 @RestController
-@RequestMapping("/works")
+@RequestMapping("/api/works")
 public class WorkController {
 
     @Autowired
