@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ElementRef, Input } from "@angular/core";
+import {Component, ViewChild, AfterViewInit, ElementRef, Input, NgZone, EventEmitter, Output} from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { SemanticModalComponent } from "ng-semantic";
 import { Work } from "../_models/work";
@@ -23,7 +23,10 @@ export class NewWorkComponent implements AfterViewInit {
     @Input('requestId')
     requestId: string;
 
-    constructor(formBuilder: FormBuilder, private workService: WorkService, private elementRef: ElementRef) {
+    @Output() onSave = new EventEmitter<boolean>();
+
+    constructor(formBuilder: FormBuilder, private workService: WorkService, private elementRef: ElementRef,
+    private zone: NgZone) {
         this.newWorkForm = formBuilder.group({
             'description': new FormControl(''),
             'price': new FormControl(''),
@@ -50,10 +53,18 @@ export class NewWorkComponent implements AfterViewInit {
             response => console.log("success"));
         this.newWorkModal.hide();
         this.newWorkForm.reset();
+
+        this.onSave.emit(true);
     }
 
-    ngAfterViewInit(){
+    ngAfterViewInit(): void {
         jQuery(this.elementRef.nativeElement).find('.search.selection.dropdown.status').dropdown({allowTab:false});
         jQuery(this.elementRef.nativeElement).find('.search.selection.dropdown.master').dropdown({allowTab:false});
     }
+
+    /*reload(): void {
+        this.zone.runOutsideAngular(() => {
+            location.reload();
+        });
+    }*/
 }

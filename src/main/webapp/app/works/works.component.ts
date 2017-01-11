@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
+import {Component, OnInit, AfterViewInit, ViewChild, EventEmitter, Output} from "@angular/core";
 import { Work } from "../_models/work";
 import { RequestSharedService } from "../_services/index";
 import { Subscription }   from 'rxjs/Subscription';
@@ -22,6 +22,8 @@ export class WorksComponent {
     @ViewChild('newWorkComponent')
     newWorkComponent: NewWorkComponent;
 
+    @Output() onReInit = new EventEmitter<boolean>();
+
     constructor(private sharedService: RequestSharedService) {
         this.worksSubscription = this.sharedService.works$
             .subscribe(works => {
@@ -34,6 +36,10 @@ export class WorksComponent {
                 this.requestDetails = requestDetails
             })
         ;
+    }
+
+    reInit(value: boolean): void {
+        this.onReInit.emit(value);
     }
 
     createNewWork(): void {

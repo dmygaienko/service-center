@@ -26,6 +26,10 @@ export class RequestComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+       this.initRequestDetails();
+    }
+
+    initRequestDetails(): void {
         this.route.params
             .switchMap((params: Params) => this.requestService.getById(params['id']))
             .subscribe(requestDetails => {
