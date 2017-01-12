@@ -32,7 +32,6 @@ public class RequestDao {
 
         Fetch<Request, Product> productJoin = root.fetch(Request_.product, JoinType.LEFT);
         productJoin.fetch(Product_.maker, JoinType.LEFT);
-        /*productJoin.fetch(Product_.manual, JoinType.LEFT);*/
 
         root.fetch(Request_.comments, JoinType.LEFT);
         root.fetch(Request_.images, JoinType.LEFT);
@@ -84,22 +83,12 @@ public class RequestDao {
 
         Fetch<Request, Product> productJoin = root.fetch(Request_.product, JoinType.LEFT);
         productJoin.fetch(Product_.maker, JoinType.LEFT);
-        /*productJoin.fetch(Product_.manual, JoinType.LEFT);*/
 
         return entityManager.createQuery(query).getResultList();
     }
 
     public void update(Request request) {
         entityManager.merge(request);
-    }
-
-    /*"'C:\\dev\\workspaces\\java\\service-center\\src\\main\\resources\\images\\maxresdefault.jpg'" +*/
-    public List getImages() {
-        Query nativeQuery = entityManager.createNativeQuery(
-                "select LENGTH(FILE_READ(" +
-                        "'classpath:/images/maxresdefault.jpg'" +
-                        ")) file");
-        return nativeQuery.getResultList();
     }
 
     public Request load(long id) {
