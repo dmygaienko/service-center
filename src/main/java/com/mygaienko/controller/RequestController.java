@@ -19,13 +19,13 @@ public class RequestController {
     @Autowired
     private RequestService requestService;
 
-    @RequestMapping(value = "/create/{cliendId}", method = RequestMethod.POST)
-    public void createRequest(@RequestBody Request request, @PathVariable("cliendId") long cliendId) {
-        requestService.createRequest(request, cliendId);
+    @RequestMapping(value = "/create/{clientId}", method = RequestMethod.POST)
+    public void createRequest(@RequestBody Request request, @PathVariable("clientId") long clientId) {
+        requestService.createRequest(request, clientId);
     }
 
-    @RequestMapping(value = "/update/{cliendId}", method = RequestMethod.POST)
-    public void updateRequest(@RequestBody Request request, @PathVariable("cliendId") long cliendId) {
+    @RequestMapping(value = "/update/{clientId}", method = RequestMethod.POST)
+    public void updateRequest(@RequestBody Request request, @PathVariable("clientId") long cliendId) {
         requestService.updateRequest(request, cliendId);
     }
 

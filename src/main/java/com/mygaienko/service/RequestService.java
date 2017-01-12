@@ -33,8 +33,8 @@ public class RequestService {
     private UserDao userDao;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void createRequest(Request request, long cliendId) {
-        request.setClient(userDao.load(cliendId));
+    public void createRequest(Request request, long clientId) {
+        request.setClient(userDao.load(clientId));
         requestDao.createRequest(request);
     }
 
