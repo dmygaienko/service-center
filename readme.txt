@@ -54,7 +54,7 @@ angular 2 api https://angular.io/docs/ts/latest/api/forms/index/FormControl-clas
 gource
 ----------------
 l.iv..luc.l
-m.md
+m.md..bley.brke
 ----------------
 http://onehungrymind.com/build-better-angular-2-application-redux-ngrx/ events - UP, state - DOWN
 ----------------
