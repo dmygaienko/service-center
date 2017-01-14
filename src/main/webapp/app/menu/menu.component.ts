@@ -12,7 +12,8 @@ export class MenuComponent {
         new MenuComponent.Menu('home', 'Home'),
         new MenuComponent.Menu('requests', 'Requests'),
         new MenuComponent.Menu('employees', 'Our Employees'),
-        new MenuComponent.Menu('about', 'About')
+        new MenuComponent.Menu('about', 'About'),
+        new MenuComponent.Menu('login', 'Logout')
     ];
 
     activeMenu = this.menuItems[0];

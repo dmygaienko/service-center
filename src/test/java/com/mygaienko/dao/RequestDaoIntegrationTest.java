@@ -124,9 +124,4 @@ public class RequestDaoIntegrationTest extends BaseDaoIntegrationTest {
         assertEquals("product1", actuals.get(0).getProductName());
     }
 
-    @Test
-    public void getImages() throws Exception {
-        requestDao.getImages();
-
-    }
 }
