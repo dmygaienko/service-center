@@ -17,4 +17,12 @@ export class RequestService {
         return this.http.get('/api/request/byId/' + id).map((response: Response) => <RequestDetails> response.json());
     }
 
+    add(): Observable<Request[]> {
+        return this.http.get('/api/request/add').map((response: Response) => <Request[]> response.json());
+    }
+
+    update(): Observable<Request[]> {
+        return this.http.get('/api/request/update').map((response: Response) => <Request[]> response.json());
+    }
+
 }

@@ -60,3 +60,9 @@ http://onehungrymind.com/build-better-angular-2-application-redux-ngrx/ events -
 ----------------
 //TODO добавить sm-rating
 ----------------
+1) Записать видео через gource в ppm
+C:\dev\workspaces\java\service-center>gource -1024x768 -c 4.0 --seconds-per-day 1 --output-framerate 60 --output-ppm-stream output.ppm
+2) Конвертировать ppm в wmv
+C:\dev\workspaces\java\service-center>C:\installs\ffmpeg-20170116-e664730-win64-static\bin\ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i output.ppm  -vcodec wmv1 -r 60 -qscale 0 out.wmv
+----------------
+
