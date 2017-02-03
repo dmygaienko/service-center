@@ -9,6 +9,15 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
+
+/*
+*   Transaction Management
+    Logging
+    Exception Handling (especially when you may want to have detailed traces or have some plan of recovering from exceptions)
+    Security aspects
+    Instrumentation
+* */
+
 @Aspect
 @Component
 public class DelayAspect {
