@@ -27,20 +27,20 @@ insert into request
 (1, 11, 'REPAIR', 'CREATED', 1, 0);
 
 insert into request
-(id, client_id, type, status, product_id, paid) values
-(2, 12, 'REPAIR', 'CREATED', 1, 0);
+(id, client_id, type, status, product_id, paid, datetime) values
+(2, 12, 'REPAIR', 'CREATED', 1, 0, '2012-09-17 18:47:52.69');
 
 insert into request
-(id, client_id, type, status, product_id, paid) values
-(3, 12, 'REPAIR', 'CREATED', 1, 0);
+(id, client_id, type, status, product_id, paid, datetime) values
+(3, 12, 'REPAIR', 'CREATED', 1, 0, '2012-09-16 18:47:52.69');
 
 insert into request
-(id, client_id, type, status, product_id, paid) values
-(4, 12, 'REPAIR', 'CREATED', 1, 0);
+(id, client_id, type, status, product_id, paid, datetime) values
+(4, 12, 'REPAIR', 'CREATED', 1, 0, '2012-09-15 18:47:52.69');
 
 insert into request
-(id, client_id, type, status, product_id, paid) values
-(5, 12, 'REPAIR', 'CREATED', 1, 0);
+(id, client_id, type, status, product_id, paid, datetime) values
+(5, 12, 'REPAIR', 'CREATED', 1, 0, '2012-09-14 18:47:52.69');
 
 insert into request
 (id, client_id, type, status, product_id, paid) values

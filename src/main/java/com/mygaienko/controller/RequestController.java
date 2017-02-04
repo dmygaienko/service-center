@@ -49,4 +49,9 @@ public class RequestController {
         return requestService.getAll();
     }
 
+    @RequestMapping(value = "/latest", method = RequestMethod.GET)
+    public List<RequestDescription> getLatest() {
+        return requestService.getLatest();
+    }
+
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by enda1n on 12.11.2016.
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @EqualsAndHashCode(of = "id")
-public class Comment {
+public class Comment  implements Serializable {
 
     @Id
     @GeneratedValue

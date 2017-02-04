@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -18,7 +19,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @EqualsAndHashCode(of = "id")
-public class Image {
+public class Image  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

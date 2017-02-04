@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @EqualsAndHashCode(of = "id")
-public class Component {
+public class Component  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

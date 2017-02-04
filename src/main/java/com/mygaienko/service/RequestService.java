@@ -1,5 +1,6 @@
 package com.mygaienko.service;
 
+import com.mygaienko.dao.RequestCachedDao;
 import com.mygaienko.dao.RequestDao;
 import com.mygaienko.dao.UserDao;
 import com.mygaienko.model.Component;
@@ -12,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +28,9 @@ public class RequestService {
 
     @Autowired
     private RequestDao requestDao;
+
+    @Autowired
+    private RequestCachedDao requestCachedDao;
 
     @Autowired
     private PhotoScheduler photoScheduler;
@@ -90,5 +96,18 @@ public class RequestService {
     public boolean statusIsStarted(long requestId) {
         Request request = requestDao.findById(requestId);
         return request.getStatus().equals(RequestStatus.STARTED);
+    }
+
+    public List<RequestDescription> getLatest() {
+        List<RequestDescription> latest = new ArrayList<>(requestCachedDao.getLatest());
+
+        if (CollectionUtils.isEmpty(latest)) {
+            List<Request> latestEntities = requestDao.getLatest();
+            List<RequestDescription> requestDescriptions = toDescriptionDto(latestEntities);
+            requestCachedDao.saveRequests(requestDescriptions);
+            return requestDescriptions;
+        } else {
+            return latest;
+        }
     }
 }

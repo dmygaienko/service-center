@@ -87,6 +87,19 @@ public class RequestDao {
         return entityManager.createQuery(query).getResultList();
     }
 
+    public List<Request> getLatest() {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Request> query = builder.createQuery(Request.class);
+
+        Root<Request> root = query.from(Request.class);
+        query.orderBy(builder.desc(root.get(Request_.datetime)));
+
+        Fetch<Request, Product> productJoin = root.fetch(Request_.product, JoinType.LEFT);
+        productJoin.fetch(Product_.maker, JoinType.LEFT);
+
+        return entityManager.createQuery(query).setFirstResult(0).setMaxResults(20).getResultList();
+    }
+
     public void update(Request request) {
         entityManager.merge(request);
     }

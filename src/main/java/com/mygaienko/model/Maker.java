@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by enda1n on 10.11.2016.
@@ -18,7 +19,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Entity(name = "maker")
 @EqualsAndHashCode(of = "id")
-public class Maker {
+public class Maker implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

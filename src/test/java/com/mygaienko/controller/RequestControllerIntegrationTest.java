@@ -44,6 +44,14 @@ public class RequestControllerIntegrationTest extends BaseControllerIntegrationT
         doFindById(1);
     }
 
+    @Test
+    @WithMockUser(username = "email@test.com", roles = "CLIENT")
+    public void testGetLatest() throws Exception {
+        mockMvc.perform(get("/api/request/latest"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+    }
+
     @Test(expected = NestedServletException.class)
     @WithMockUser(username = "email@test.com", roles = "CLIENT")
     public void testFindByFirstNameAsNotOwnerClient() throws Exception {
@@ -51,7 +59,7 @@ public class RequestControllerIntegrationTest extends BaseControllerIntegrationT
     }
 
     private void doFindById(final int id) throws Exception {
-        mockMvc.perform(get("/request/find/byId/" + id))
+        mockMvc.perform(get("/api/request/byId/" + id))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
